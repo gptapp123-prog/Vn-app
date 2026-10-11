@@ -1,0 +1,8 @@
+node_modules/
+.gradle/
+build/
+ios-build/
+android/local.properties
+*.p12
+*.mobileprovision
+.env
