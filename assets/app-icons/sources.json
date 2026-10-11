@@ -1,0 +1,123 @@
+{
+  "icpv": {
+    "packageId": "vn.dcs.icpvbook",
+    "storeUrl": "https://play.google.com/store/apps/details?id=vn.dcs.icpvbook&hl=vi&gl=VN",
+    "storeTitle": "iCPV - Book - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/1WHmqJJDUWCFhYo59EkF3pCLWxKiNw7_stktZWwweiS7G8ZVe0aVVaDj29ClVV2AVarphqfDy2YiL1DVhFI00w=s0-br30",
+    "path": "assets/app-icons/icpv.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "0689d71eb2b3605ce6a45351ed6d047b9fbb2f00724dca49829ed93446e3fb07",
+    "retrievedAt": "2026-10-11"
+  },
+  "congdanso": {
+    "packageId": "vn.gov.tphcm.hcmccitizen",
+    "storeUrl": "https://play.google.com/store/apps/details?id=vn.gov.tphcm.hcmccitizen&hl=vi&gl=VN",
+    "storeTitle": "Công dân số TPHCM - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/gZ1xGcwFwNAhrXiiYhQ5rv63Lv5VmZudN-x8E-erNHx3-JZ2ibRrlqdkmPTLA0YikSHpLehE4PxOUAKS9fHa=s0-br30",
+    "path": "assets/app-icons/congdanso.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "c347f54e6a87d04528309abaa10304183e8a4a287eab7100b14fd2a44478af5d",
+    "retrievedAt": "2026-10-11"
+  },
+  "vnetraffic": {
+    "packageId": "com.ots.c08.vnetraffic",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.ots.c08.vnetraffic&hl=vi&gl=VN",
+    "storeTitle": "VNeTraffic - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/zcimruio5nGsvPDqt96ksCio3JFSJUEkYgZDsB028wsmzSBgO093eL1xSdK7yKoyP1g18k170CJKZLWJRDvrCMI=s0-br30",
+    "path": "assets/app-icons/vnetraffic.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "1082d2ae5179671ec0c5af2d06f96db3cef66ac53cf3b557741ce0f46437c2da",
+    "retrievedAt": "2026-10-11"
+  },
+  "vneid": {
+    "packageId": "com.vnid",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.vnid&hl=vi&gl=VN",
+    "storeTitle": "VNeID - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/Utqq3TNQjcmk0vSU20EnnkvswdUkehddvz-p99fciGgpuP8ccXnkBS3tadvLh0Yq3szz9kB8i5EtOwOBNkYcMw=s0-br30",
+    "path": "assets/app-icons/vneid.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "01fad4c5bcd25ad5e4a05d482e46f44272eab07c6fc4927f33f952d107749866",
+    "retrievedAt": "2026-10-11"
+  },
+  "evncskh": {
+    "packageId": "com.evn.cskh.vn",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.evn.cskh.vn&hl=vi&gl=VN",
+    "storeTitle": "EVN CSKH - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/evGmYOBR-G6zzS9dHu4PfgXLPBndHo-7oyvP1pPjET1PFCz07YxpSiwvqqm-4OSs64YG9iTm8VjawtzEFLj8i20=s0-br30",
+    "path": "assets/app-icons/evncskh.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "90ef3df16e7a8c370631b22c6f0896d6732a0bcc0e62d570102f81c06bc89867",
+    "retrievedAt": "2026-10-11"
+  },
+  "momo": {
+    "packageId": "com.mservice.momotransfer",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.mservice.momotransfer&hl=vi&gl=VN",
+    "storeTitle": "MoMo-Trợ Thủ Tài Chính với AI - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/cQzoiahn_EveryMo_uF6tm3AEV7HzNPesJEOegmpflSeorbI4LfKOq5fK1sX3cnpwH98cjxK5C1PAQMB7UzsAg=s0-br30",
+    "path": "assets/app-icons/momo.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "d504274c8927c309f5124de70fe02b6c9a2c4f5d78aa92d2f017397678c80ac9",
+    "retrievedAt": "2026-10-11"
+  },
+  "vssid": {
+    "packageId": "com.bhxhapp",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.bhxhapp&hl=vi&gl=VN",
+    "storeTitle": "VssID - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/o-pSOeJ9DMzXWPfwqxKxKf4iD0a7Hr5Hm9JgjvKkLwdLRNTkbRAy-rQI0x58e5umPJZznr8q5pxjqzjbW4L2vFk=s0-br30",
+    "path": "assets/app-icons/vssid.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "13c9bd2aa7c67a16ab90f2f3d2d1d62bbb4bbdcd7255056c8b8667210eb364d0",
+    "retrievedAt": "2026-10-11"
+  },
+  "etax": {
+    "packageId": "com.etax.icanhan",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.etax.icanhan&hl=vi&gl=VN",
+    "storeTitle": "eTax Mobile - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/cFl9nHozdk4Gt_1MZTbIQx8a88ENxumTLgp0Up0T-X4nUBHALom3nw6jzbe6TyOXHF7zbL66_Y3OTM4znmCMOxM=s0-br30",
+    "path": "assets/app-icons/etax.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "81453f7704575a20649cbfb60a33f2a120ccb8c2da7cbda049a175f561b5833d",
+    "retrievedAt": "2026-10-11"
+  },
+  "help114": {
+    "packageId": "com.mobicall.mobicall114",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.mobicall.mobicall114&hl=vi&gl=VN",
+    "storeTitle": "Help 114 - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/uQ_FEbb3pqZvKWQ59lv5jdt28KUCLrm6aGSRIaqotAMsReNByIifCoMDq0EdFgdcK1sQzY_hh8Vw1WSv7rRipQ=s0-br30",
+    "path": "assets/app-icons/help114.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "83220273b86dd1d38178649ccf54680419f0039164b085e73d461c378bf21c77",
+    "retrievedAt": "2026-10-11"
+  },
+  "sos": {
+    "packageId": "com.ots.cbkc.catp",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.ots.cbkc.catp&hl=vi&gl=VN",
+    "storeTitle": "SOS An ninh trật tự - CATP HCM - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/GSpshvV3pLobBtelzMDjCqYaHyctuQaSilJNJvtFdp_2Kikj4q9S9hDadk74LneyzvEQMhoPCHLM353Pw7bQAw=s0-br30",
+    "path": "assets/app-icons/sos.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "d1c96824be857971a03146ad42abdf8a558a5d0a7dcb7093c1b506b9360611c5",
+    "retrievedAt": "2026-10-11"
+  },
+  "payoo": {
+    "packageId": "vn.payoo",
+    "storeUrl": "https://play.google.com/store/apps/details?id=vn.payoo&hl=vi&gl=VN",
+    "storeTitle": "Payoo - Ứng dụng trên Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/XYPxLEh3st6h69Rnh05RFyeO8rczvzH0U9JyLixJ_Lt3-W7VGg2DarVb75Dct0NxuqHU5zTIDVK92Q6IVA11VQ=s0-br30",
+    "path": "assets/app-icons/payoo.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "3c35e1ed772f77167b674a70bad999b0ee23324b8ec0c4308e74f2ff5a048b39",
+    "retrievedAt": "2026-10-11"
+  }
+}

@@ -10,14 +10,16 @@ function storeUrl(raw){
  if(u.hostname==='apps.apple.com'&&/^\/[a-z]{2}\/app\/[^/]+\/id\d+$/.test(u.pathname)&&!u.search)return u.href;
  }catch{}return '';
 }
+function iconData(value){return typeof value==='string'&&value.length<=350000&&/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(value)?value:'';}
 function validate(input){
  if(!input||typeof input.name!=='string'||!input.name.trim()||input.name.length>80)return {ok:false,message:'Nhập tên ứng dụng, tối đa 80 ký tự.'};
  const android=input.android?storeUrl(input.android):'',ios=input.ios?storeUrl(input.ios):'';
  if(input.android&&!android||input.ios&&!ios||!android&&!ios)return {ok:false,message:'Dùng liên kết trực tiếp của ứng dụng trên Google Play hoặc App Store.'};
  if(android&&!android.startsWith('https://play.google.com/')||ios&&!ios.startsWith('https://apps.apple.com/'))return {ok:false,message:'Đặt đúng liên kết Android và iOS.'};
+ if(input.icon&&!iconData(input.icon))return {ok:false,message:'Icon phải là ảnh PNG, JPG hoặc WebP hợp lệ, tối đa 256 KB.'};
  const group=GROUPS.includes(input.group)?input.group:'Khác';
  const bills=Array.isArray(input.bills)?[...new Set(input.bills.filter(x=>BILL_TYPES.includes(x)))]:[];
- return {ok:true,item:{id:android||ios,name:input.name.trim(),group,android,ios,bills,sourceState:'USER_ADDED_UNVERIFIED'}};
+ return {ok:true,item:{id:android||ios,name:input.name.trim(),group,android,ios,bills,...(input.icon?{icon:iconData(input.icon)}:{}),sourceState:'USER_ADDED_UNVERIFIED'}};
 }
 function matchBilling(query){const q=String(query||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').toLowerCase();if(!/(hoa don|tien dien|tien nuoc|hoc phi|cuoc internet|cuoc dien thoai|phi chung cu|thanh toan.*(?:internet|truyen hinh|dien thoai|tra sau))/.test(q)&&!/^\s*thanh toan\s*$/.test(q))return null;
  const rules=[['Tiền điện',/tien dien|hoa don dien/],['Tiền nước',/tien nuoc|hoa don nuoc/],['Internet / truyền hình',/internet|truyen hinh/],['Điện thoại trả sau',/dien thoai|tra sau/],['Học phí',/hoc phi/],['Phí chung cư',/chung cu/]];
@@ -29,5 +31,5 @@ function repository(idb){
  return {async list(){const rows=await transaction('readonly',store=>store.getAll());return rows.map(validate).filter(x=>x.ok).map(x=>x.item);},async put(input,previousId){const verdict=validate(input);if(!verdict.ok)throw Error(verdict.message);await transaction('readwrite',store=>{if(previousId&&previousId!==verdict.item.id)store.delete(previousId);return store.put(verdict.item);});return verdict.item;},remove(id){return transaction('readwrite',store=>store.delete(id));},import(items){const rows=parseBackup(JSON.stringify({schema:'vn-app-apps/1',apps:items}));return transaction('readwrite',store=>{let req;for(const item of rows)req=store.put(item);return req||store.getAll();});}};
 }
 function parseBackup(text){const data=JSON.parse(text);if(!data||data.schema!=='vn-app-apps/1'||!Array.isArray(data.apps)||data.apps.length>500)throw Error('Tệp danh mục không hợp lệ hoặc vượt 500 app.');return data.apps.map(input=>{const result=validate(input);if(!result.ok)throw Error(result.message);return result.item;});}
-return Object.freeze({GROUPS,BILL_TYPES,storeUrl,validate,matchBilling,parseBackup,repository});
+return Object.freeze({GROUPS,BILL_TYPES,storeUrl,iconData,validate,matchBilling,parseBackup,repository});
 });

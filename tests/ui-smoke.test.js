@@ -8,7 +8,7 @@ const context={scrollTo(){},document:{getElementById:id=>els[id],addEventListene
 context.window=context;context.window.VN_ENGINE=require('../engine.js');
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(base,'data.js'),'utf8'),context,{filename:'data.js'});
-for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-routing.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
+for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
 assert.ok(els.routeBody.innerHTML.includes('app-launcher'));
 assert.ok(els.desktopNav.innerHTML.includes('Việc cần làm'));
 function search(q){els.searchInput.value=q;handlers['searchForm:submit']({preventDefault(){}});return els.routeBody.innerHTML;}
