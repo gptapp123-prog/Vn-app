@@ -1,11 +1,14 @@
 {
-  "version": "3.14.0",
-  "applicationId": "vn.vnapp.citizen",
+  "version": "3.15.0",
+  "applicationId": "vn.vnapp.citizen.stable",
   "buildType": "release",
   "minSdk": 26,
   "targetSdk": 36,
   "statusAuthority": "GitHub Actions and artifact verification; this file is configuration, not proof of a binary build",
   "androidSigning": "Persistent release key via GitHub Secrets or local signing of unsigned CI artifact",
   "iosSigning": "Apple certificate and provisioning profile required",
-  "realDeviceTested": false
+  "realDeviceTested": false,
+  "legacyAndroidApplicationId": "vn.vnapp.citizen",
+  "iosBundleIdentifier": "vn.vnapp.citizen",
+  "migration": "Separate Android install; legacy data remains in old app. User exports and imports JSON; no automatic cross-app access."
 }
