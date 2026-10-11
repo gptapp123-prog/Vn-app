@@ -14,11 +14,14 @@ if(mode==='simulator'||mode==='device'){
 }else{
  const team=process.env.VN_APP_APPLE_TEAM_ID||'';if(!/^[A-Z0-9]{10}$/.test(team)){console.error('Cần VN_APP_APPLE_TEAM_ID hợp lệ và tài khoản ký đã cấu hình trong Xcode.');process.exit(1);}
  if(mode==='archive'){
-  run('xcodebuild',[...common,'-destination','generic/platform=iOS','-configuration','Release','-archivePath',archive,'DEVELOPMENT_TEAM='+team,'CODE_SIGN_STYLE=Automatic','-allowProvisioningUpdates','archive']);
+  const profile=process.env.VN_APP_PROFILE_UUID,identity=process.env.VN_APP_SIGNING_IDENTITY;
+  const signing=profile?['CODE_SIGN_STYLE=Manual','PROVISIONING_PROFILE_SPECIFIER='+profile,'CODE_SIGN_IDENTITY='+identity]:['CODE_SIGN_STYLE=Automatic','-allowProvisioningUpdates'];
+  if(profile&&(!/^[A-Fa-f0-9-]{36}$/.test(profile)||!identity)){console.error('Thiếu cấu hình profile hoặc chứng thư ký.');process.exit(1);}
+  run('xcodebuild',[...common,'-destination','generic/platform=iOS','-configuration','Release','-archivePath',archive,'DEVELOPMENT_TEAM='+team,...signing,'archive']);
   const app=path.join(archive,'Products/Applications/App.app');if(!fs.existsSync(app))throw Error('Archive chưa chứa ứng dụng.');run('codesign',['--verify','--deep','--strict',app]);console.log('Đã tạo archive có ký. Chưa xuất IPA.');
  }else{
   const opts=process.env.VN_APP_EXPORT_OPTIONS;if(!opts||!fs.existsSync(opts)||!fs.existsSync(archive)){console.error('Cần archive đã ký và VN_APP_EXPORT_OPTIONS trỏ tới ExportOptions.plist từ Xcode.');process.exit(1);}
-  run('plutil',['-lint',opts]);run('xcodebuild',['-exportArchive','-archivePath',archive,'-exportOptionsPlist',path.resolve(opts),'-exportPath','ios-build/export','-allowProvisioningUpdates']);
+  run('plutil',['-lint',opts]);run('xcodebuild',['-exportArchive','-archivePath',archive,'-exportOptionsPlist',path.resolve(opts),'-exportPath','ios-build/export',...(process.env.VN_APP_PROFILE_UUID?[]:['-allowProvisioningUpdates'])]);
   const files=fs.readdirSync(path.join(root,'ios-build/export')).filter(n=>n.endsWith('.ipa'));if(!files.length)throw Error('Chưa có IPA sau khi xuất.');console.log('Đã xuất IPA: '+files.join(', '));
  }
 }

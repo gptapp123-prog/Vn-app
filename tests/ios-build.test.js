@@ -4,6 +4,10 @@ let r=check('device','linux');assert.match(r.error,/EXIT:1/);assert.equal(r.call
 r=check('device');assert.equal(r.error,'');assert.ok(r.calls.some(([,args])=>args.includes('iphoneos')&&args.includes('CODE_SIGNING_ALLOWED=NO')));assert.match(r.messages.at(-1),/chưa ký, chưa cài được/);
 r=check('archive');assert.match(r.error,/EXIT:1/);assert.equal(r.calls.length,1);
 r=check('archive','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345'});assert.equal(r.error,'');assert.ok(r.calls.some(([command,args])=>command==='codesign'&&args.includes('--strict')));
+r=check('archive','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345',VN_APP_PROFILE_UUID:'12345678-1234-1234-1234-123456789ABC',VN_APP_SIGNING_IDENTITY:'certificate-sha'});
+assert.equal(r.error,'');assert.ok(r.calls.some(([,args])=>args.includes('CODE_SIGN_STYLE=Manual')&&args.includes('PROVISIONING_PROFILE_SPECIFIER=12345678-1234-1234-1234-123456789ABC')&&!args.includes('-allowProvisioningUpdates')));
+r=check('archive','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345',VN_APP_PROFILE_UUID:'12345678-1234-1234-1234-123456789ABC'});
+assert.match(r.error,/EXIT:1/);assert.equal(r.calls.length,1);
 r=check('export','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345'});assert.match(r.error,/EXIT:1/);
 r=check('export','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345',VN_APP_EXPORT_OPTIONS:'/private/export.plist'},true,false);assert.match(r.error,/Chưa có IPA/);
 r=check('export','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345',VN_APP_EXPORT_OPTIONS:'/private/export.plist'});assert.equal(r.error,'');assert.match(r.messages.at(-1),/App.ipa/);console.log('PASS iOS runner mock: Mac required, unsigned iPhone labelled, Team ID required, archive signature check and IPA existence gate.');

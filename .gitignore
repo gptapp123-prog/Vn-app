@@ -6,3 +6,6 @@ android/local.properties
 *.p12
 *.mobileprovision
 .env
+
+__pycache__/
+*.pyc

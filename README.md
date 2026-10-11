@@ -1,6 +1,6 @@
 # VN App V3.11 — dự án Android, iOS và web
 
-Đã tạo thư mục `android/`, `ios/` và bundle `www/`. Hướng dẫn và tình trạng build: [MOBILE_BUILD_V3_11.md](docs/MOBILE_BUILD_V3_11.md). Đã build thành công APK debug Android và kiểm chữ ký. Chưa có IPA iOS; cần Mac/Xcode và cấu hình ký Apple. Chạy `npm ci`, `npm run check`, `npm run mobile:sync` trước khi build bằng Android Studio/Xcode.
+Đã tạo thư mục `android/`, `ios/` và bundle `www/`. Hướng dẫn và tình trạng build: [MOBILE_BUILD_V3_11.md](docs/MOBILE_BUILD_V3_11.md). Đã build thành công APK debug Android và kiểm chữ ký. Đã biên dịch iPhone chưa ký thành công trên GitHub macOS. Quy trình xuất IPA có ký đã có; cần GitHub Secrets Apple và chạy nghiệm thu thiết bị thật. Chạy `npm ci`, `npm run check`, `npm run mobile:sync` trước khi build bằng Android Studio/Xcode.
 
 
 39 mục nhu cầu thuộc 8 nhóm, 7 tình huống đời sống; tìm kiếm luôn sẵn có, ghim mục thường dùng, chữ lớn, tăng tương phản và danh sách tự kiểm tra. Giữ tính năng thêm ứng dụng, hóa đơn, danh bạ và tra cứu mã bưu chính/biển số/tên tỉnh cũ–mới.
@@ -13,4 +13,4 @@ Thêm Check hàng & QR: camera/ảnh khi trình duyệt hỗ trợ, nhập GTIN,
 
 Danh bạ cá nhân: họ tên, chức vụ, điện thoại, đơn vị; thêm/sửa/xóa, tìm và nhập/xuất JSON. Lưu IndexedDB trên thiết bị. Chưa có admin đăng nhập hay đồng bộ máy chủ. Menu desktop ở trái, mobile dùng nút mở menu bên trái; tra cứu ở giữa.
 
-Phần tạo bản cài iPhone: [IOS_INSTALLATION.md](docs/IOS_INSTALLATION.md). Đã chuẩn bị build device, archive có ký và export IPA; chưa có môi trường Mac và chữ ký để chạy thực.
+Phần tạo bản cài iPhone: [IOS_INSTALLATION.md](docs/IOS_INSTALLATION.md). Đã build device trên Mac của GitHub và bổ sung workflow ký thủ công, xuất IPA, kiểm chữ ký và dọn khóa tạm. Chưa có Secrets Apple để chạy ký thật.

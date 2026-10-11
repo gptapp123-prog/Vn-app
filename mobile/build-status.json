@@ -15,8 +15,9 @@
   "sha256": "15609f9d545deb91da599187889b5fec2662cf2548f6e17459bcb58368223ccf",
   "sizeBytes": 35911822,
   "testSuites": 16,
-  "iosBinary": "BLOCKED_MACOS_XCODE_SIGNING_UNAVAILABLE",
+  "iosBinary": "GITHUB_MACOS_DEVICE_COMPILE_SUCCESS",
   "realDeviceTested": false,
-  "workflowExecuted": false,
-  "iosInstallerWorkflow": "PREPARED_NOT_EXECUTED"
+  "workflowExecuted": true,
+  "iosInstallerWorkflow": "IMPLEMENTED_SIGNING_SECRETS_REQUIRED_NOT_EXECUTED",
+  "iosCompileRun": "https://github.com/gptapp123-prog/Vn-app/actions/runs/38109404255"
 }
