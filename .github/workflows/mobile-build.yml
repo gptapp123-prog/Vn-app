@@ -6,6 +6,7 @@ on:
       - "*.js"
       - "*.css"
       - "*.json"
+      - "*.txt"
       - "core/**"
       - "mobile/**"
       - "scripts/**"

@@ -1,3 +1,5 @@
+> Tài liệu kiến trúc V3.0 lưu để đối chiếu lịch sử. Trạng thái hiện hành: xem RELEASE_3_13.md. App hiện có IndexedDB cho danh bạ, app tự thêm và mục đã ghim; dùng Capacitor và thư viện quét mã.
+
 # VN App V3.0 — Kiến trúc kỹ thuật và phạm vi thực thi
 
 **Phiên bản:** 3.0.0. **Mốc thiết kế:** 11/10/2026. **Phạm vi thực sự triển khai:** công cụ điều hướng và trả hướng dẫn từ danh mục nguồn tĩnh. Không đồng nghĩa tích hợp dữ liệu công dân hoặc hỏi đáp pháp luật trực tuyến.

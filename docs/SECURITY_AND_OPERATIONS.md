@@ -53,4 +53,4 @@ Không chủ động chặn kết nối internet của trang được mở trong
 ## 5. Trạng thái thực tế
 
 Đã thực thi: static routing, source registry, evidence gate, response contract, unit/smoke tests.
-Chưa có: kiểm tra URL live định kỳ, backend, RAG công bố pháp luật, kho văn bản có hiệu lực, xác thực OCR/tài liệu, tích hợp API của cơ quan chức năng, APK, iOS build, test browser/thiết bị thực hoàn chỉnh.
+Chưa có: kiểm tra URL live định kỳ, backend, RAG công bố pháp luật, kho văn bản có hiệu lực, xác thực OCR/tài liệu, tích hợp API của cơ quan chức năng, bản IPA iOS đã ký và thử thiết bị thực hoàn chỉnh. APK Android và iOS compile đã có; phạm vi kiểm chứng hiện hành ghi tại RELEASE_3_13.md.
