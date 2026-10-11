@@ -9,3 +9,11 @@ android/local.properties
 
 __pycache__/
 *.pyc
+
+www/
+audit-*.cjs
+*.jks
+*.keystore
+*.password
+android/app/src/main/assets/public/
+ios/App/App/public/

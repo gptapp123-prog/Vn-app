@@ -9,7 +9,7 @@ context.window=context;context.window.VN_ENGINE=require('../engine.js');
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(base,'data.js'),'utf8'),context,{filename:'data.js'});
 for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-routing.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
-assert.ok(els.routeBody.innerHTML.includes('Việc thường cần làm'));
+assert.ok(els.routeBody.innerHTML.includes('app-launcher'));
 assert.ok(els.desktopNav.innerHTML.includes('Việc cần làm'));
 function search(q){els.searchInput.value=q;handlers['searchForm:submit']({preventDefault(){}});return els.routeBody.innerHTML;}
 const directHtml=search('Tôi muốn đổi GPLX');const visiblePart=directHtml.split('<details class="sourcedetail">')[0];assert.ok(visiblePart.includes('dvc-gplx.csgt.bocongan.gov.vn/p/home/dvc-cap-doi-gplx.html'));assert.equal((visiblePart.match(/class="primary"/g)||[]).length,1);assert.ok(!visiblePart.includes('Mở VNeID'));assert.ok(!visiblePart.includes('Hướng dẫn thực hiện'));
@@ -67,7 +67,7 @@ assert.ok(els.actionStatus.textContent.includes('Chưa xác nhận kết quả')
 handlers['document:click']({target:{closest(s){return s==='[data-open-app]'?{dataset:{openApp:'vneid'}}:null;}}});
 assert.ok(els.actionStatus.textContent.includes('Bản web này chưa mở trực tiếp'));
 handlers['document:click']({target:{closest(s){return s==='[data-route]'?{dataset:{route:'apps'}}:null;}}});
-assert.ok(els.hero.style.display==='');assert.ok(els.routeBody.innerHTML.includes('appFilterForm'));assert.ok(els.routeBody.innerHTML.includes('Mở ứng dụng'));
+assert.ok(els.hero.style.display==='');assert.ok(els.routeBody.innerHTML.includes('appFilterForm'));assert.ok(els.routeBody.innerHTML.includes('data-open-app='));
 handlers['document:submit']({preventDefault(){},target:{id:'appFilterForm',elements:{query:{value:'VNeID'},group:{value:'Tất cả'}}}});
 assert.ok(els.routeBody.innerHTML.includes('VNeID'));assert.ok(!els.routeBody.innerHTML.includes('EVN CSKH</div>'));
 handlers['document:click']({target:{closest(s){return s==='[data-route]'?{dataset:{route:'more'}}:null;}}});

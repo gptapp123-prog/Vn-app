@@ -38,7 +38,7 @@ function process(raw){
  if(draft.status==='MATCHED'||draft.status==='MULTIPLE_MATCHES'){
    status=results.length>1?'MULTIPLE_MATCHES':results.length===1?'MATCHED':'NO_VERIFIED_ROUTE';
  }
- return Object.freeze({version:'3.9.0',status,results,sensitive:safe.sensitive||draft.sensitive,
+ return Object.freeze({version:'3.13.0',status,results,sensitive:safe.sensitive||draft.sensitive,
    message:status==='NO_VERIFIED_ROUTE'?'Không có điểm đến hợp lệ trong danh mục cho tác vụ này. Không tự tạo liên kết hoặc kết quả.':draft.message,
    diagnostics:Object.freeze({stages:STAGES,sourceMode:'STATIC_CATALOG',remoteApi:false,personalDataAccess:false,confidenceModel:'not_calibrated'})});
 }

@@ -10,7 +10,7 @@ assert.equal(U.match('mất căn cước').services[0].id,'identity');
 assert.equal(U.match('đặt lịch khám').services[0].kind,'needs-provider');
 assert.equal(U.match('mất điện').services[0].id,'outage');
 assert.equal(U.match('nhà tôi mất nước').services[0].id,'water-help');
-assert.equal(U.match('bản sao giấy khai sinh').status,'CHOOSE');
+assert.equal(U.match('bản sao giấy khai sinh').status,'MATCH');
 assert.equal(U.match('vừa sinh con').scenarios[0].id,'newborn');
 assert.equal(U.match('một yêu cầu không trong danh mục').status,'NO_MATCH');
 assert.equal(U.match('').status,'EMPTY');assert.equal(U.find('hộ chiếu').length,1);

@@ -40,7 +40,7 @@ const rows=[
  ['medical','Khám bệnh / đặt lịch khám',3,'needs-provider','','bhxh','','dat lich kham|kham benh|tim benh vien'],
  ['fines','Tra cứu phạt nguội',4,'engine','phạt nguội','police','vnetraffic','phat nguoi|loi xe'],
  ['licence','Đổi bằng lái xe',4,'engine','đổi giấy phép lái xe','dvc','vneid','doi bang lai|doi gplx'],
- ['lost-licence','Cấp lại bằng lái bị mất',4,'engine','cấp lại giấy phép lái xe','dvc','vneid','mat bang lai|cap lai gplx'],
+ ['lost-licence','Cấp lại bằng lái bị mất',4,'engine','cấp lại giấy phép lái xe','dvc','vneid','mat bang lai|bang lai bi mat|cap lai bang lai|mat gplx|cap lai gplx'],
  ['register-car','Đăng ký xe lần đầu',4,'portal','Đăng ký xe lần đầu','police','vneid','dang ky xe|mua xe moi'],
  ['plate','Tra ký hiệu biển số',4,'reference','biển số','','','ky hieu bien so|dau bien so'],
  ['tax','Nộp thuế cá nhân',5,'engine','nộp thuế','tax','etax','nop thue|dong thue'],
@@ -68,7 +68,7 @@ const SCENARIOS=Object.freeze([
  {id:'support',title:'Cần trợ giúp khẩn cấp',terms:['can tro giup khan cap'],serviceIds:['emergency','child-help','disaster']}
 ].map(x=>Object.freeze({...x,serviceIds:Object.freeze(x.serviceIds),terms:Object.freeze(x.terms)})));
 function find(query='',group='Tất cả'){const terms=normalize(query).split(' ').filter(Boolean);return SERVICES.filter(s=>(group==='Tất cả'||s.group===group)&&terms.every(t=>normalize([s.title,s.group,...s.terms].join(' ')).split(' ').includes(t)));}
-function match(query){const q=normalize(query);if(!q)return {status:'EMPTY',services:[],scenarios:[]};const scenarios=SCENARIOS.filter(s=>s.terms.some(t=>contains(q,t)));if(scenarios.length)return {status:'SCENARIO',services:[],scenarios};const ranked=SERVICES.map(s=>({s,score:Math.max(0,...s.terms.filter(t=>contains(q,t)).map(t=>normalize(t).split(' ').length*10))})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);return {status:ranked.length>1?'CHOOSE':ranked.length?'MATCH':'NO_MATCH',services:(/\bva\b/.test(q)?ranked:ranked.filter(x=>x.score===ranked[0]?.score)).map(x=>x.s).slice(0,8),scenarios:[]};}
+function match(query){const engine=typeof module==='object'&&module.exports?require('../engine.js'):globalThis.VN_ENGINE;const q=normalize(engine?.focusQuery?engine.focusQuery(query):query);if(!q)return {status:'EMPTY',services:[],scenarios:[]};const scenarios=SCENARIOS.filter(s=>s.terms.some(t=>contains(q,t)));if(scenarios.length)return {status:'SCENARIO',services:[],scenarios};const ranked=SERVICES.map(s=>({s,score:Math.max(0,...s.terms.filter(t=>contains(q,t)).map(t=>normalize(t).split(' ').length*10))})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);const selected=(/\bva\b/.test(q)?ranked:ranked.filter(x=>x.score===ranked[0]?.score)).map(x=>x.s).slice(0,8);return {status:selected.length>1?'CHOOSE':selected.length?'MATCH':'NO_MATCH',services:selected,scenarios:[]};}
 const urls=new Set(Object.values(SOURCES).flatMap(s=>[s.url,s.evidence]).filter(Boolean));
 function validUrl(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&urls.has(value);}catch{return false;}}
 function checklist(serviceId){const s=SERVICES.find(x=>x.id===serviceId);if(!s)return [];return s.kind==='portal'||s.kind==='engine'?['Xác định đúng việc cần làm và địa phương áp dụng','Đọc thủ tục, giấy tờ và khoản phí trên hệ thống chính thức','Thực hiện và giữ phiếu tiếp nhận tại hệ thống đích']:['Chọn đúng đơn vị hoặc ứng dụng xử lý','Đối chiếu thông tin tại ứng dụng / kênh chính thức','Tự kiểm tra kết quả tại dịch vụ đã sử dụng'];}

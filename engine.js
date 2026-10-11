@@ -96,7 +96,7 @@ function score(rule,input){
  return Math.max(0,n);
 }
 function process(raw){
- const safe=sanitize(raw),input=safe.query;
+ const safe=sanitize(raw),input=focusQuery(safe.query);
  if(!input)return {status:safe.sensitive?'PRIVATE_INPUT':'EMPTY',sensitive:safe.sensitive,results:[],message:safe.sensitive?'Không nhập số định danh, điện thoại hoặc biển số tại VN App. Hãy nhập tên việc cần làm.':'Nhập nhu cầu, ví dụ “kiểm tra thẻ BHYT” hoặc “đổi GPLX”.'};
  let ranked=INTENTS.map((rule)=>({rule,points:score(rule,input)})).filter(a=>a.points>=30).sort((a,b)=>b.points-a.points);
  // Tác vụ độc lập xuất hiện cùng lúc (ví dụ: "BHYT và thuế") thì cùng trả hai đích.
@@ -106,5 +106,10 @@ function process(raw){
  return {status:primary.length>1?'MULTIPLE_MATCHES':'MATCHED',sensitive:safe.sensitive,results:primary,message:safe.sensitive?'Đã loại bỏ thông tin có thể nhận diện cá nhân khỏi yêu cầu. Chỉ thực hiện tra cứu tại nguồn chính thức.':'Đã xác định nguồn để thực hiện tác vụ.'};
 }
 function selfCheck(){const bad=INTENTS.flatMap(t=>t.actions.filter(a=>!validUrl(a.url)).map(a=>t.id+': '+a.url));return {intents:INTENTS.length,invalidLinks:bad};}
-return Object.freeze({process,normalize,sanitize,validUrl,selfCheck,intents:INTENTS.map(x=>({id:x.id,task:x.task,name:x.name}))});
+function focusQuery(raw){
+ const q=normalize(raw);
+ // Keep semantic negations such as “không gắn chip”; remove only denied actions.
+ return q.replace(/\b(?:khong|dung)\s+(?:(?:muon|can)\s+)?(?:doi|tra cuu|dang ky|nop|thanh toan|cap|lam|mo|tim|kiem tra)\b.*?(?=\b(?:toi muon|toi can|muon|can|thay vao do|ma la|chi muon)\b|$)/g,' ').replace(/\s+/g,' ').trim();
+}
+return Object.freeze({process,normalize,sanitize,focusQuery,validUrl,selfCheck,intents:INTENTS.map(x=>({id:x.id,task:x.task,name:x.name}))});
 });

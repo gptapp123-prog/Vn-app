@@ -32,7 +32,7 @@ Ví dụ cấu hình ở reverse proxy (chỉ áp dụng sau khi xác nhận tư
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 X-Content-Type-Options: nosniff
 Referrer-Policy: no-referrer
-Permissions-Policy: geolocation=(), camera=(), microphone=()
+Permissions-Policy: geolocation=(), camera=(self), microphone=()
 Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests
 ```
 
