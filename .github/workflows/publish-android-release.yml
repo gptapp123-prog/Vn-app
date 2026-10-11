@@ -1,0 +1,27 @@
+name: Publish verified Android installer
+on:
+  push:
+    branches: [main]
+    paths: ['release/**', '.github/workflows/publish-android-release.yml']
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: VN-App-Android-release
+          run-id: 38150680496
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: release-input
+      - name: Restore verified signed installer
+        run: python3 release/restore-signed-apk.py
+      - name: Publish installer
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create v3.14.0 VN_App_V3_14_Android_Release.apk SHA256SUMS.txt --target f3e6b0c9ed48119c99f7e3aea575bdf7d6bfc230 --title "VN App 3.14 — Android" --notes "Bổ sung nút Đóng chức năng và sửa thao tác Quay lại. APK đã ký bằng khóa phát hành cố định, Android 8 trở lên. Chưa kiểm thử cài đặt trên điện thoại thật."
