@@ -1,5 +1,15 @@
 name: VN App mobile build
 on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/**"
+      - "android/**"
+      - "icon.png"
+      - "apple-touch-icon.png"
+      - "index.html"
+      - "scripts/build-mobile.cjs"
+      - ".github/workflows/mobile-build.yml"
   workflow_dispatch:
 jobs:
   android:
@@ -25,8 +35,9 @@ jobs:
           name: VN-App-Android-debug
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-          retention-days: 3
+          retention-days: 1
   ios-simulator:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,4 +54,4 @@ jobs:
           name: VN-App-iOS-Simulator
           path: ios-build/Build/Products/Debug-iphonesimulator/App.app
           if-no-files-found: error
-          retention-days: 3
+          retention-days: 1
