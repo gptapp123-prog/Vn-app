@@ -1,0 +1,14 @@
+<!-- Merge inside the native AndroidManifest manifest element, not application. -->
+<queries>
+    <package android:name="com.mservice.momotransfer" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="vn.payoo" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.evn.cskh.vn" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.vnid" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.ots.c08.vnetraffic" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="vn.dcs.icpvbook" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="vn.gov.tphcm.hcmccitizen" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.etax.icanhan" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.bhxhapp" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.ots.cbkc.catp" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.mobicall.mobicall114" xmlns:android="http://schemas.android.com/apk/res/android" />
+</queries>

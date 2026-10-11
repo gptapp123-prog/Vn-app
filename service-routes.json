@@ -1,0 +1,413 @@
+{
+  "version": "3.9.0",
+  "reviewedAt": "2026-10-11",
+  "routes": [
+    {
+      "id": "birth",
+      "title": "Làm giấy khai sinh",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Bạn đăng ký khai sinh tại tỉnh/thành nào?",
+      "choices": []
+    },
+    {
+      "id": "marriage",
+      "title": "Đăng ký kết hôn",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Bạn đăng ký kết hôn tại tỉnh/thành nào?",
+      "choices": []
+    },
+    {
+      "id": "civil-copy",
+      "title": "Xin bản sao giấy tờ hộ tịch",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Bạn xin trích lục hộ tịch tại địa phương nào?",
+      "choices": []
+    },
+    {
+      "id": "identity",
+      "title": "Cấp lại căn cước bị mất",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "APP",
+      "appId": "vneid",
+      "functionLabel": "Cấp lại căn cước",
+      "level": "APP_FUNCTION_MANUAL",
+      "canDeepLinkFunction": false
+    },
+    {
+      "id": "passport",
+      "title": "Làm hộ chiếu",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Bạn làm hộ chiếu gắn chip hay không gắn chip?",
+      "choices": [
+        [
+          "chip",
+          "Gắn chip"
+        ],
+        [
+          "plain",
+          "Không gắn chip"
+        ]
+      ]
+    },
+    {
+      "id": "eidentity",
+      "title": "Mở VNeID & giấy tờ điện tử",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "APP",
+      "appId": "vneid",
+      "functionLabel": "Định danh điện tử",
+      "level": "APP_FUNCTION_MANUAL",
+      "canDeepLinkFunction": false
+    },
+    {
+      "id": "temporary",
+      "title": "Đăng ký tạm trú",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "WEB",
+      "url": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/tthc?matt=26356",
+      "label": "Vào thủ tục Đăng ký tạm trú",
+      "level": "PROCEDURE_PAGE",
+      "source": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/tthc?matt=26356",
+      "access": "READ_PUBLIC_PAGE",
+      "alternatives": []
+    },
+    {
+      "id": "permanent",
+      "title": "Đăng ký thường trú",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "WEB",
+      "url": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/tthc?matt=26360",
+      "label": "Vào thủ tục Đăng ký thường trú",
+      "level": "PROCEDURE_PAGE",
+      "source": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/tthc?matt=26360",
+      "access": "READ_PUBLIC_PAGE",
+      "alternatives": []
+    },
+    {
+      "id": "residence",
+      "title": "Xác nhận thông tin cư trú",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "WEB",
+      "url": "https://dichvucong.bocongan.gov.vn/public/link-to/chi-tiet-thu-tuc?ma-thu-tuc=26497",
+      "label": "Vào thủ tục Xác nhận thông tin về cư trú",
+      "level": "PROCEDURE_PAGE",
+      "source": "https://dichvucong.bocongan.gov.vn/public/link-to/chi-tiet-thu-tuc?ma-thu-tuc=26497",
+      "access": "READ_PUBLIC_PAGE",
+      "alternatives": []
+    },
+    {
+      "id": "stay",
+      "title": "Thông báo lưu trú",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "WEB",
+      "url": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/tthc?matt=26346",
+      "label": "Vào thủ tục Thông báo lưu trú",
+      "level": "PROCEDURE_PAGE",
+      "source": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/tthc?matt=26346",
+      "access": "READ_PUBLIC_PAGE",
+      "alternatives": []
+    },
+    {
+      "id": "electric",
+      "title": "Thanh toán tiền điện",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "APP",
+      "appId": "evncskh",
+      "functionLabel": "Thanh toán tiền điện",
+      "level": "APP_FUNCTION_MANUAL",
+      "canDeepLinkFunction": false
+    },
+    {
+      "id": "water",
+      "title": "Thanh toán tiền nước",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "BILLING",
+      "requiresProvider": true
+    },
+    {
+      "id": "internet",
+      "title": "Thanh toán Internet / truyền hình",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "BILLING",
+      "requiresProvider": true
+    },
+    {
+      "id": "postpaid",
+      "title": "Thanh toán điện thoại trả sau",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "BILLING",
+      "requiresProvider": true
+    },
+    {
+      "id": "outage",
+      "title": "Mất điện / báo sự cố điện",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "CONTACT",
+      "contactId": "evn-hotline"
+    },
+    {
+      "id": "water-help",
+      "title": "Tìm đơn vị cấp nước / báo mất nước",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Cần đối chiếu tên đơn vị cấp nước trên hóa đơn để tìm đúng đầu mối.",
+      "choices": []
+    },
+    {
+      "id": "bhyt",
+      "title": "Kiểm tra thẻ BHYT",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "WEB",
+      "url": "https://baohiemxahoi.gov.vn/tracuu/pages/tra-cuu-thoi-han-su-dung-the-bhyt.aspx",
+      "label": "Tra cứu thời hạn BHYT",
+      "level": "FUNCTION_PAGE",
+      "source": "https://baohiemxahoi.gov.vn/tracuu/pages/tra-cuu-thoi-han-su-dung-the-bhyt.aspx",
+      "access": "CATALOGUED_LIVE_UNCONFIRMED",
+      "alternatives": []
+    },
+    {
+      "id": "bhxh",
+      "title": "Xem quá trình đóng BHXH",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "APP",
+      "appId": "vssid",
+      "functionLabel": "Quá trình tham gia BHXH",
+      "level": "APP_FUNCTION_MANUAL",
+      "canDeepLinkFunction": false
+    },
+    {
+      "id": "maternity",
+      "title": "Tìm thủ tục chế độ thai sản",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "SOURCE_GAP",
+      "question": "Chưa có đường dẫn riêng cho thủ tục thai sản được xác minh.",
+      "choices": []
+    },
+    {
+      "id": "pension",
+      "title": "Tìm thủ tục hưởng lương hưu",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "SOURCE_GAP",
+      "question": "Chưa có đường dẫn riêng cho thủ tục lương hưu được xác minh.",
+      "choices": []
+    },
+    {
+      "id": "medical",
+      "title": "Khám bệnh / đặt lịch khám",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Cần biết tên cơ sở khám để mở đúng kênh đặt lịch.",
+      "choices": []
+    },
+    {
+      "id": "fines",
+      "title": "Tra cứu phạt nguội",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "WEB",
+      "url": "https://csgt.bocongan.gov.vn/tra-cuu-phat-nguoi",
+      "label": "Tra cứu phạt nguội tại CSGT",
+      "level": "FUNCTION_PAGE",
+      "source": "https://congan.cantho.gov.vn/phong-chong-toi-pham/canh-bao-thu-doan-lua-dao-gia-mao-thong-bao-vi-pham-giao-thong-qua-tin-nhan-sms-7863.html",
+      "access": "SOURCE_CONFIRMED_LIVE_UNCONFIRMED",
+      "alternatives": [
+        {
+          "appId": "vnetraffic",
+          "functionLabel": "Tra cứu vi phạm"
+        }
+      ]
+    },
+    {
+      "id": "licence",
+      "title": "Đổi bằng lái xe",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "WEB",
+      "url": "https://dvc-gplx.csgt.bocongan.gov.vn/p/home/dvc-cap-doi-gplx.html",
+      "label": "Vào trang đổi GPLX",
+      "level": "FUNCTION_PAGE",
+      "source": "https://mps.gov.vn/bai-viet/thong-bao-chuyen-doi-trang-thong-tin-dien-tu-cung-cap-dich-vu-cong-cap-doi-giay-phep-lai-xe-d2-t44164",
+      "access": "INDEXED_LIVE_UNCONFIRMED",
+      "alternatives": []
+    },
+    {
+      "id": "lost-licence",
+      "title": "Cấp lại bằng lái bị mất",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "SOURCE_GAP",
+      "question": "Chưa có đường dẫn cấp lại GPLX đã xác minh cho trường hợp này.",
+      "choices": []
+    },
+    {
+      "id": "register-car",
+      "title": "Đăng ký xe lần đầu",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Xe đăng ký là ô tô hay xe máy, sản xuất trong nước hay nhập khẩu?",
+      "choices": []
+    },
+    {
+      "id": "plate",
+      "title": "Tra ký hiệu biển số",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "LOCAL",
+      "query": "biển số"
+    },
+    {
+      "id": "tax",
+      "title": "Nộp thuế cá nhân",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "APP",
+      "appId": "etax",
+      "functionLabel": "Nộp thuế",
+      "level": "APP_FUNCTION_MANUAL",
+      "canDeepLinkFunction": false
+    },
+    {
+      "id": "taxcode",
+      "title": "Tra cứu thông tin thuế",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "APP",
+      "appId": "etax",
+      "functionLabel": "Thông tin thuế",
+      "level": "APP_FUNCTION_MANUAL",
+      "canDeepLinkFunction": false
+    },
+    {
+      "id": "business",
+      "title": "Đăng ký hộ kinh doanh",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Bạn đăng ký hộ kinh doanh tại tỉnh/thành nào?",
+      "choices": []
+    },
+    {
+      "id": "school",
+      "title": "Tìm thông tin tuyển sinh",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Bạn tra tuyển sinh của tỉnh/thành hoặc trường nào?",
+      "choices": []
+    },
+    {
+      "id": "tuition",
+      "title": "Thanh toán học phí",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "BILLING",
+      "requiresProvider": true
+    },
+    {
+      "id": "postal",
+      "title": "Tra mã bưu chính phường/xã",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "LOCAL",
+      "query": "mã bưu chính"
+    },
+    {
+      "id": "old-new",
+      "title": "Đối chiếu tên tỉnh cũ–mới",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "LOCAL",
+      "query": "tỉnh cũ mới"
+    },
+    {
+      "id": "postoffice",
+      "title": "Tìm hỗ trợ bưu điện / bưu cục",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "CONTACT",
+      "contactId": "vnpost"
+    },
+    {
+      "id": "case",
+      "title": "Kiểm tra hồ sơ dịch vụ công",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "QUESTION",
+      "question": "Hồ sơ được nộp trên hệ thống nào?",
+      "choices": [
+        [
+          "national",
+          "DVC Quốc gia"
+        ],
+        [
+          "police",
+          "Bộ Công an"
+        ]
+      ]
+    },
+    {
+      "id": "feedback",
+      "title": "Phản ánh với chính quyền TP.HCM",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "APP",
+      "appId": "congdanso",
+      "functionLabel": "Phản ánh",
+      "level": "APP_FUNCTION_MANUAL",
+      "canDeepLinkFunction": false
+    },
+    {
+      "id": "emergency",
+      "title": "Khẩn cấp: công an, cháy, cấp cứu",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "CALL",
+      "phone": "",
+      "requiresEmergencyType": true
+    },
+    {
+      "id": "child-help",
+      "title": "Bảo vệ trẻ em · gọi 111",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "CALL",
+      "phone": "111",
+      "requiresEmergencyType": false
+    },
+    {
+      "id": "disaster",
+      "title": "Sự cố, thiên tai · gọi 112",
+      "reviewedAt": "2026-10-11",
+      "personalResult": false,
+      "status": "CALL",
+      "phone": "112",
+      "requiresEmergencyType": false
+    }
+  ]
+}

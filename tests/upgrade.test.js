@@ -1,0 +1,20 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const {webcrypto}=require('node:crypto');globalThis.crypto ||= webcrypto;
+const K=require('../core/public-knowledge');
+(async()=>{
+ const policy={validUrl:url=>url==='https://example.gov.vn/approved'};
+ const content='Synthetic test fixture only; not legal advice.';
+ const hash=Buffer.from(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(content))).toString('hex');
+ const record={source_id:'test',issuing_agency:'test',source_url:'https://example.gov.vn/approved',content,content_checksum:hash,jurisdiction:'test',reviewer:'test',quote:'Synthetic',status:'APPROVED',publication_date:'2026-10-01',effective_from:'2026-10-01',effective_to:null,last_verified_at:'2026-10-10',provision_id:'test'};
+ const now=new Date('2026-10-11T00:00:00Z');
+ assert.equal((await K.validate(record,policy,now)).ok,true);
+ for(const [patch,reason] of [[{content:content+'changed'},'CHECKSUM_MISMATCH'],[{status:'DRAFT'},'NOT_CURRENT_APPROVED'],[{superseded_by:'new'},'NOT_CURRENT_APPROVED'],[{effective_from:'2026-11-01'},'FUTURE_RECORD'],[{effective_to:'2026-10-10'},'EXPIRED_OR_INVALID_END'],[{last_verified_at:'2026-08-01'},'REVIEW_STALE'],[{quote:'absent'},'QUOTE_NOT_FOUND'],[{source_url:'https://evil.example/'},'UNAPPROVED_SOURCE'],[{reviewer:''},'MISSING_METADATA']])assert.equal((await K.validate({...record,...patch},policy,now)).reason,reason);
+ assert.equal((await K.retrieve([],policy,'test',now)).kind,'NO_VALID_EVIDENCE');
+ assert.equal((await K.retrieve([record],policy,'elsewhere',now)).kind,'NO_VALID_EVIDENCE');
+ assert.equal((await K.retrieve([record],policy,'test',now)).kind,'EVIDENCE_FOUND');
+ const other='Conflicting synthetic test fixture.';const otherHash=Buffer.from(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(other))).toString('hex');
+ assert.equal((await K.retrieve([record,{...record,content:other,quote:'Conflicting',content_checksum:otherHash}],policy,'test',now)).reason,'CONFLICTING_EVIDENCE');
+ assert.equal(K.service('https://evil.example/',policy).kind,'NOT_AVAILABLE');
+ console.log('PASS V3.1: evidence validity, tampering, conflicts, jurisdiction.');
+})().catch(error=>{console.error(error);process.exitCode=1;});

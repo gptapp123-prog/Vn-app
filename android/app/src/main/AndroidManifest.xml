@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:launchMode="singleTask"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+    </application>
+
+    <!-- Merge inside the native AndroidManifest manifest element, not application. -->
+<queries>
+    <package android:name="com.mservice.momotransfer" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="vn.payoo" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.evn.cskh.vn" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.vnid" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.ots.c08.vnetraffic" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="vn.dcs.icpvbook" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="vn.gov.tphcm.hcmccitizen" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.etax.icanhan" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.bhxhapp" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.ots.cbkc.catp" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.mobicall.mobicall114" xmlns:android="http://schemas.android.com/apk/res/android" />
+</queries>
+
+    <!-- Permissions -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+</manifest>

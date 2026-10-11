@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-11",
+  "coverage": "17 curated public contacts; not a nationwide provider directory",
+  "contacts": [
+    {
+      "id": "evn-hotline",
+      "name": "EVN · hỗ trợ khách hàng dùng điện",
+      "group": "Điện",
+      "region": "Toàn quốc",
+      "phone": "1558",
+      "url": "https://www.evn.com.vn/d/vi-VN/news/Chinh-thuc-dua-vao-hoat-dong-so-dien-thoai-tong-dai-cham-soc-khach-hang-EVN-1558-tu-ngay-1582026-60-142-509261",
+      "source": "https://www.evn.com.vn/d/vi-VN/news/Chinh-thuc-dua-vao-hoat-dong-so-dien-thoai-tong-dai-cham-soc-khach-hang-EVN-1558-tu-ngay-1582026-60-142-509261",
+      "note": "Đầu số từ 15/8/2026; chỉ gọi thoại. Thanh toán tiền điện: mở mục Thanh toán hóa đơn.",
+      "actionRoute": "billing",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "vnpost",
+      "name": "Vietnam Post · Bưu điện Việt Nam",
+      "group": "Bưu chính",
+      "region": "Toàn quốc",
+      "phone": "1900545481",
+      "url": "https://vnpost.vn/vi/ho-tro",
+      "source": "https://vnpost.vn/vi/hoat-dong-nganh/thong-bao-sua-doi-ma-buu-chinh-quoc-gia-theo-don-vi-hanh-chinh-2-cap",
+      "note": "Hỗ trợ dịch vụ và hướng dẫn tìm bưu cục. Chưa nhập danh sách địa chỉ từng bưu cục.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "postal-lookup",
+      "name": "Tra cứu mã bưu chính quốc gia",
+      "group": "Bưu chính",
+      "region": "Toàn quốc",
+      "url": "https://mabuuchinh.vn/",
+      "source": "https://vnpost.vn/vi/hoat-dong-nganh/thong-bao-sua-doi-ma-buu-chinh-quoc-gia-theo-don-vi-hanh-chinh-2-cap",
+      "note": "Kênh tra cứu được Vietnam Post công bố; chọn đúng phường/xã nhận thư.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "sawaco",
+      "name": "SAWACO · chăm sóc khách hàng cấp nước",
+      "group": "Nước",
+      "region": "TP.HCM · theo phạm vi từng đơn vị",
+      "phone": "1900999997",
+      "email": "cskhsawaco@sawaco.com.vn",
+      "url": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Xem đơn vị và phạm vi cấp nước, đối chiếu hóa đơn. Không suy ra nhà cung cấp từ tên thành phố.",
+      "actionRoute": "billing",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "rural-tayninh",
+      "name": "Nước sạch nông thôn · Tây Ninh",
+      "group": "Nước",
+      "region": "Tây Ninh",
+      "url": "https://sonnmt.tayninh.gov.vn/nuoc-sach-nong-thon/",
+      "source": "https://sonnmt.tayninh.gov.vn/nuoc-sach-nong-thon/",
+      "note": "Nguồn cơ quan quản lý; chưa có danh bạ đầy đủ từng trạm hoặc kênh thanh toán đã xác minh.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "emergency-112",
+      "name": "112 · sự cố, thiên tai, tình huống nguy cấp",
+      "group": "Khẩn cấp",
+      "region": "Toàn quốc",
+      "phone": "112",
+      "url": "https://xaydungchinhsach.chinhphu.vn/nhung-dieu-can-biet-ve-tong-dai-112-so-dien-thoai-tiep-nhan-thong-tin-va-noi-dung-thong-tin-ve-su-co-tham-hoa-119250714134442873.htm",
+      "source": "https://xaydungchinhsach.chinhphu.vn/nhung-dieu-can-biet-ve-tong-dai-112-so-dien-thoai-tiep-nhan-thong-tin-va-noi-dung-thong-tin-ve-su-co-tham-hoa-119250714134442873.htm",
+      "note": "Kênh tiếp nhận thông tin khẩn cấp theo NĐ 200/2025/NĐ-CP.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "benthanh",
+      "name": "Cấp nước Bến Thành",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://benthanh.sawaco.com.vn/",
+      "email": "benthanh@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "cholon",
+      "name": "Cấp nước Chợ Lớn",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://cholon.sawaco.com.vn/",
+      "email": "cholon@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "giadinh",
+      "name": "Cấp nước Gia Định",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://giadinh.sawaco.com.vn/",
+      "email": "giadinh@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "thuduc",
+      "name": "Cấp nước Thủ Đức",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://thuduc.sawaco.com.vn/",
+      "email": "thuduc@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "phuhoatan",
+      "name": "Cấp nước Phú Hòa Tân",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://www.phuwaco.com.vn/",
+      "email": "phuhoatan@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "nhabe",
+      "name": "Cấp nước Nhà Bè",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://nhabe.sawaco.com.vn/",
+      "email": "nhabe@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "tanhoa",
+      "name": "Cấp nước Tân Hòa",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://tanhoa.sawaco.com.vn/",
+      "email": "tanhoa@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "trungan",
+      "name": "Cấp nước Trung An",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://trungan.sawaco.com.vn/",
+      "email": "trungan@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "cangio",
+      "name": "Cấp nước Cần Giờ",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://cangio.sawaco.com.vn/",
+      "email": "cangio@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "nongthon",
+      "name": "Cấp nước Nông Thôn",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://nongthon.sawaco.com.vn/",
+      "email": "nongthon@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    },
+    {
+      "id": "nuocngam",
+      "name": "Cấp nước Nước Ngầm Sài Gòn",
+      "group": "Nước",
+      "region": "TP.HCM · xem phạm vi đơn vị trong nguồn",
+      "url": "https://nuocngam.sawaco.com.vn/",
+      "email": "nuocngam@sawaco.com.vn",
+      "source": "https://cskh.sawaco.com.vn/ho_tro/thong_tin_don_vi",
+      "note": "Đơn vị trong danh bạ SAWACO; chưa xác minh kênh thanh toán riêng của đơn vị.",
+      "reviewedAt": "2026-10-11"
+    }
+  ]
+}

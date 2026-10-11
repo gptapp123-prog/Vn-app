@@ -1,0 +1,9 @@
+'use strict';const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');const source=fs.readFileSync(path.join(__dirname,'../scripts/ios-build.cjs'),'utf8');
+function check(mode,platform='darwin',env={},exists=true,ipa=true){const calls=[],messages=[];const ctx={__dirname:path.join(__dirname,'../scripts'),require:name=>name==='node:child_process'?{spawnSync:(command,args)=>(calls.push([command,args]),{status:0})}:name==='node:fs'?{existsSync:()=>exists,readdirSync:()=>ipa?['App.ipa']:[]}:path,process:{platform,argv:['node','script',mode],env,exit:code=>{throw Error('EXIT:'+code);}},console:{log:x=>messages.push(x),error:x=>messages.push(x)}};let error='';try{vm.runInNewContext(source,ctx);}catch(e){error=e.message;}return {calls,messages,error};}
+let r=check('device','linux');assert.match(r.error,/EXIT:1/);assert.equal(r.calls.length,0);
+r=check('device');assert.equal(r.error,'');assert.ok(r.calls.some(([,args])=>args.includes('iphoneos')&&args.includes('CODE_SIGNING_ALLOWED=NO')));assert.match(r.messages.at(-1),/chưa ký, chưa cài được/);
+r=check('archive');assert.match(r.error,/EXIT:1/);assert.equal(r.calls.length,1);
+r=check('archive','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345'});assert.equal(r.error,'');assert.ok(r.calls.some(([command,args])=>command==='codesign'&&args.includes('--strict')));
+r=check('export','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345'});assert.match(r.error,/EXIT:1/);
+r=check('export','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345',VN_APP_EXPORT_OPTIONS:'/private/export.plist'},true,false);assert.match(r.error,/Chưa có IPA/);
+r=check('export','darwin',{VN_APP_APPLE_TEAM_ID:'ABCDE12345',VN_APP_EXPORT_OPTIONS:'/private/export.plist'});assert.equal(r.error,'');assert.match(r.messages.at(-1),/App.ipa/);console.log('PASS iOS runner mock: Mac required, unsigned iPhone labelled, Team ID required, archive signature check and IPA existence gate.');

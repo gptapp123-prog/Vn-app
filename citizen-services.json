@@ -1,0 +1,814 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-11",
+  "groups": [
+    "Giấy tờ & gia đình",
+    "Nơi ở & cư trú",
+    "Điện, nước & hóa đơn",
+    "Sức khỏe & bảo hiểm",
+    "Xe & đi lại",
+    "Thuế & kinh doanh",
+    "Học tập & đời sống",
+    "Hỗ trợ & khẩn cấp"
+  ],
+  "services": [
+    {
+      "id": "birth",
+      "title": "Làm giấy khai sinh",
+      "group": "Giấy tờ & gia đình",
+      "kind": "portal",
+      "target": "Đăng ký khai sinh",
+      "sourceId": "dvc",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "khai sinh",
+        "giay khai sinh",
+        "lam khai sinh"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "marriage",
+      "title": "Đăng ký kết hôn",
+      "group": "Giấy tờ & gia đình",
+      "kind": "portal",
+      "target": "Đăng ký kết hôn",
+      "sourceId": "dvc",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "ket hon",
+        "dang ky ket hon"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "civil-copy",
+      "title": "Xin bản sao giấy tờ hộ tịch",
+      "group": "Giấy tờ & gia đình",
+      "kind": "portal",
+      "target": "Cấp bản sao trích lục hộ tịch",
+      "sourceId": "dvc",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "trich luc ho tich",
+        "ban sao giay khai sinh"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "identity",
+      "title": "Cấp lại căn cước bị mất",
+      "group": "Giấy tờ & gia đình",
+      "kind": "portal",
+      "target": "Cấp lại thẻ căn cước",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "mat can cuoc",
+        "mat cccd",
+        "cap lai can cuoc"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "passport",
+      "title": "Làm hộ chiếu",
+      "group": "Giấy tờ & gia đình",
+      "kind": "portal",
+      "target": "Cấp hộ chiếu phổ thông ở trong nước",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "ho chieu",
+        "passport"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "eidentity",
+      "title": "Mở VNeID & giấy tờ điện tử",
+      "group": "Giấy tờ & gia đình",
+      "kind": "app",
+      "target": "vneid",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "mo vneid",
+        "dinh danh dien tu"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "temporary",
+      "title": "Đăng ký tạm trú",
+      "group": "Nơi ở & cư trú",
+      "kind": "engine",
+      "target": "đăng ký tạm trú",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "tam tru",
+        "dang ky tam tru"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "permanent",
+      "title": "Đăng ký thường trú",
+      "group": "Nơi ở & cư trú",
+      "kind": "engine",
+      "target": "đăng ký thường trú",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "thuong tru",
+        "ho khau"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "residence",
+      "title": "Xác nhận thông tin cư trú",
+      "group": "Nơi ở & cư trú",
+      "kind": "engine",
+      "target": "xác nhận cư trú",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "xac nhan cu tru",
+        "giay cu tru"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "stay",
+      "title": "Thông báo lưu trú",
+      "group": "Nơi ở & cư trú",
+      "kind": "engine",
+      "target": "thông báo lưu trú",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "luu tru",
+        "thong bao luu tru"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "electric",
+      "title": "Thanh toán tiền điện",
+      "group": "Điện, nước & hóa đơn",
+      "kind": "billing",
+      "target": "Tiền điện",
+      "sourceId": "",
+      "appIds": [
+        "evncskh"
+      ],
+      "terms": [
+        "tien dien",
+        "hoa don dien"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "water",
+      "title": "Thanh toán tiền nước",
+      "group": "Điện, nước & hóa đơn",
+      "kind": "billing",
+      "target": "Tiền nước",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "tien nuoc",
+        "hoa don nuoc"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "internet",
+      "title": "Thanh toán Internet / truyền hình",
+      "group": "Điện, nước & hóa đơn",
+      "kind": "billing",
+      "target": "Internet / truyền hình",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "cuoc internet",
+        "thanh toan internet",
+        "cuoc truyen hinh"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "postpaid",
+      "title": "Thanh toán điện thoại trả sau",
+      "group": "Điện, nước & hóa đơn",
+      "kind": "billing",
+      "target": "Điện thoại trả sau",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "dien thoai tra sau",
+        "cuoc dien thoai"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "outage",
+      "title": "Mất điện / báo sự cố điện",
+      "group": "Điện, nước & hóa đơn",
+      "kind": "contacts",
+      "target": "điện",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "mat dien",
+        "bao su co dien",
+        "dien bi cat"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "water-help",
+      "title": "Tìm đơn vị cấp nước / báo mất nước",
+      "group": "Điện, nước & hóa đơn",
+      "kind": "contacts",
+      "target": "nước",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "mat nuoc",
+        "nuoc bi cat",
+        "don vi cap nuoc",
+        "khong biet don vi nuoc"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "bhyt",
+      "title": "Kiểm tra thẻ BHYT",
+      "group": "Sức khỏe & bảo hiểm",
+      "kind": "engine",
+      "target": "thẻ BHYT còn hạn không",
+      "sourceId": "bhxh",
+      "appIds": [
+        "vssid"
+      ],
+      "terms": [
+        "the bhyt",
+        "bao hiem y te"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "bhxh",
+      "title": "Xem quá trình đóng BHXH",
+      "group": "Sức khỏe & bảo hiểm",
+      "kind": "engine",
+      "target": "quá trình bảo hiểm xã hội",
+      "sourceId": "bhxh",
+      "appIds": [
+        "vssid"
+      ],
+      "terms": [
+        "qua trinh bhxh",
+        "dong bhxh"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "maternity",
+      "title": "Tìm thủ tục chế độ thai sản",
+      "group": "Sức khỏe & bảo hiểm",
+      "kind": "portal",
+      "target": "Giải quyết hưởng chế độ thai sản",
+      "sourceId": "social",
+      "appIds": [
+        "vssid"
+      ],
+      "terms": [
+        "che do thai san",
+        "tro cap thai san"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "pension",
+      "title": "Tìm thủ tục hưởng lương hưu",
+      "group": "Sức khỏe & bảo hiểm",
+      "kind": "portal",
+      "target": "Giải quyết hưởng lương hưu",
+      "sourceId": "social",
+      "appIds": [
+        "vssid"
+      ],
+      "terms": [
+        "luong huu",
+        "nghi huu"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "medical",
+      "title": "Khám bệnh / đặt lịch khám",
+      "group": "Sức khỏe & bảo hiểm",
+      "kind": "needs-provider",
+      "target": "",
+      "sourceId": "bhxh",
+      "appIds": [],
+      "terms": [
+        "dat lich kham",
+        "kham benh",
+        "tim benh vien"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "fines",
+      "title": "Tra cứu phạt nguội",
+      "group": "Xe & đi lại",
+      "kind": "engine",
+      "target": "phạt nguội",
+      "sourceId": "police",
+      "appIds": [
+        "vnetraffic"
+      ],
+      "terms": [
+        "phat nguoi",
+        "loi xe"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "licence",
+      "title": "Đổi bằng lái xe",
+      "group": "Xe & đi lại",
+      "kind": "engine",
+      "target": "đổi giấy phép lái xe",
+      "sourceId": "dvc",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "doi bang lai",
+        "doi gplx"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "lost-licence",
+      "title": "Cấp lại bằng lái bị mất",
+      "group": "Xe & đi lại",
+      "kind": "engine",
+      "target": "cấp lại giấy phép lái xe",
+      "sourceId": "dvc",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "mat bang lai",
+        "cap lai gplx"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "register-car",
+      "title": "Đăng ký xe lần đầu",
+      "group": "Xe & đi lại",
+      "kind": "portal",
+      "target": "Đăng ký xe lần đầu",
+      "sourceId": "police",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "dang ky xe",
+        "mua xe moi"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "plate",
+      "title": "Tra ký hiệu biển số",
+      "group": "Xe & đi lại",
+      "kind": "reference",
+      "target": "biển số",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "ky hieu bien so",
+        "dau bien so"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "tax",
+      "title": "Nộp thuế cá nhân",
+      "group": "Thuế & kinh doanh",
+      "kind": "engine",
+      "target": "nộp thuế",
+      "sourceId": "tax",
+      "appIds": [
+        "etax"
+      ],
+      "terms": [
+        "nop thue",
+        "dong thue"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "taxcode",
+      "title": "Tra cứu thông tin thuế",
+      "group": "Thuế & kinh doanh",
+      "kind": "engine",
+      "target": "mã số thuế",
+      "sourceId": "tax",
+      "appIds": [
+        "etax"
+      ],
+      "terms": [
+        "ma so thue",
+        "thong tin thue"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "business",
+      "title": "Đăng ký hộ kinh doanh",
+      "group": "Thuế & kinh doanh",
+      "kind": "portal",
+      "target": "Đăng ký hộ kinh doanh",
+      "sourceId": "dvc",
+      "appIds": [
+        "etax"
+      ],
+      "terms": [
+        "ho kinh doanh",
+        "mo quan",
+        "dang ky kinh doanh"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "school",
+      "title": "Tìm thông tin tuyển sinh",
+      "group": "Học tập & đời sống",
+      "kind": "engine",
+      "target": "tuyển sinh",
+      "sourceId": "education",
+      "appIds": [],
+      "terms": [
+        "tuyen sinh",
+        "nhap hoc"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "tuition",
+      "title": "Thanh toán học phí",
+      "group": "Học tập & đời sống",
+      "kind": "billing",
+      "target": "Học phí",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "hoc phi"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "postal",
+      "title": "Tra mã bưu chính phường/xã",
+      "group": "Học tập & đời sống",
+      "kind": "reference",
+      "target": "mã bưu chính",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "ma buu chinh",
+        "ma buu dien",
+        "zip code"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "old-new",
+      "title": "Đối chiếu tên tỉnh cũ–mới",
+      "group": "Học tập & đời sống",
+      "kind": "reference",
+      "target": "tỉnh cũ mới",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "tinh cu moi",
+        "tinh sap nhap"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "postoffice",
+      "title": "Tìm hỗ trợ bưu điện / bưu cục",
+      "group": "Học tập & đời sống",
+      "kind": "contacts",
+      "target": "bưu chính",
+      "sourceId": "",
+      "appIds": [],
+      "terms": [
+        "buu cuc",
+        "buu dien",
+        "chuyen phat"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "case",
+      "title": "Kiểm tra hồ sơ dịch vụ công",
+      "group": "Hỗ trợ & khẩn cấp",
+      "kind": "portal",
+      "target": "Tra cứu hồ sơ",
+      "sourceId": "dvc",
+      "appIds": [
+        "vneid"
+      ],
+      "terms": [
+        "ho so dich vu cong",
+        "tien do ho so"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "SOURCE_ROUTING_ONLY"
+    },
+    {
+      "id": "feedback",
+      "title": "Phản ánh với chính quyền TP.HCM",
+      "group": "Hỗ trợ & khẩn cấp",
+      "kind": "engine",
+      "target": "phản ánh TPHCM",
+      "sourceId": "hcm",
+      "appIds": [
+        "congdanso"
+      ],
+      "terms": [
+        "phan anh tphcm",
+        "phan anh ho chi minh"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "emergency",
+      "title": "Khẩn cấp: công an, cháy, cấp cứu",
+      "group": "Hỗ trợ & khẩn cấp",
+      "kind": "emergency",
+      "target": "",
+      "sourceId": "emergency",
+      "appIds": [
+        "help114"
+      ],
+      "terms": [
+        "khan cap",
+        "cap cuu",
+        "bao chay",
+        "cuu ho",
+        "sos"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "child-help",
+      "title": "Bảo vệ trẻ em · gọi 111",
+      "group": "Hỗ trợ & khẩn cấp",
+      "kind": "call",
+      "target": "111",
+      "sourceId": "child",
+      "appIds": [],
+      "terms": [
+        "bao ve tre em",
+        "tre bi bao hanh",
+        "tre em bi xam hai"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    },
+    {
+      "id": "disaster",
+      "title": "Sự cố, thiên tai · gọi 112",
+      "group": "Hỗ trợ & khẩn cấp",
+      "kind": "call",
+      "target": "112",
+      "sourceId": "emergency",
+      "appIds": [],
+      "terms": [
+        "thien tai",
+        "tham hoa",
+        "lu lut"
+      ],
+      "reviewedAt": "2026-10-11",
+      "evidenceScope": "HANDOFF_ONLY"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "newborn",
+      "title": "Gia đình vừa có em bé",
+      "terms": [
+        "vua sinh con",
+        "vua co em be"
+      ],
+      "serviceIds": [
+        "birth",
+        "bhyt",
+        "maternity"
+      ]
+    },
+    {
+      "id": "move",
+      "title": "Chuyển nơi ở",
+      "terms": [
+        "chuyen noi o",
+        "chuyen nha"
+      ],
+      "serviceIds": [
+        "temporary",
+        "permanent",
+        "residence",
+        "water",
+        "electric",
+        "postal"
+      ]
+    },
+    {
+      "id": "lost",
+      "title": "Mất giấy tờ",
+      "terms": [
+        "mat giay to"
+      ],
+      "serviceIds": [
+        "identity",
+        "lost-licence",
+        "civil-copy"
+      ]
+    },
+    {
+      "id": "vehicle",
+      "title": "Mua xe",
+      "terms": [
+        "mua xe"
+      ],
+      "serviceIds": [
+        "register-car",
+        "tax",
+        "plate",
+        "fines"
+      ]
+    },
+    {
+      "id": "retire",
+      "title": "Chuẩn bị nghỉ hưu",
+      "terms": [
+        "chuan bi nghi huu"
+      ],
+      "serviceIds": [
+        "bhxh",
+        "pension",
+        "bhyt"
+      ]
+    },
+    {
+      "id": "shop",
+      "title": "Mở hộ kinh doanh",
+      "terms": [
+        "mo ho kinh doanh"
+      ],
+      "serviceIds": [
+        "business",
+        "taxcode",
+        "tax"
+      ]
+    },
+    {
+      "id": "support",
+      "title": "Cần trợ giúp khẩn cấp",
+      "terms": [
+        "can tro giup khan cap"
+      ],
+      "serviceIds": [
+        "emergency",
+        "child-help",
+        "disaster"
+      ]
+    }
+  ],
+  "sources": {
+    "dvc": {
+      "url": "https://dichvucong.gov.vn/",
+      "publisher": "Cổng Dịch vụ công Quốc gia",
+      "level": "portal",
+      "reviewedAt": "2026-10-11"
+    },
+    "police": {
+      "url": "https://dichvucong.bocongan.gov.vn/",
+      "publisher": "Bộ Công an",
+      "level": "portal",
+      "reviewedAt": "2026-10-11",
+      "evidence": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/listThuTuc?muc_do=MUC_DO_4&page=1&per_page=20"
+    },
+    "social": {
+      "url": "https://baohiemxahoi.gov.vn/dich-vu-cong/Pages/default.aspx",
+      "publisher": "Bảo hiểm xã hội Việt Nam",
+      "level": "directory",
+      "reviewedAt": "2026-10-11"
+    },
+    "bhxh": {
+      "url": "https://baohiemxahoi.gov.vn/",
+      "publisher": "Bảo hiểm xã hội Việt Nam",
+      "level": "portal",
+      "reviewedAt": "2026-10-11"
+    },
+    "tax": {
+      "url": "https://thuedientu.gdt.gov.vn/",
+      "publisher": "Cơ quan Thuế",
+      "level": "portal",
+      "reviewedAt": "2026-10-11"
+    },
+    "education": {
+      "url": "https://moet.gov.vn/",
+      "publisher": "Bộ Giáo dục và Đào tạo",
+      "level": "portal",
+      "reviewedAt": "2026-10-11"
+    },
+    "hcm": {
+      "url": "https://hochiminhcity.gov.vn/",
+      "publisher": "Chính quyền TP.HCM",
+      "level": "portal",
+      "reviewedAt": "2026-10-11"
+    },
+    "child": {
+      "url": "https://tiengchuong.chinhphu.vn/khai-truong-tong-dai-quoc-gia-bao-ve-tre-em-11320902.htm",
+      "publisher": "Cổng TTĐT Chính phủ",
+      "level": "publication",
+      "reviewedAt": "2026-10-11"
+    },
+    "emergency": {
+      "url": "https://xaydungchinhsach.chinhphu.vn/nhung-dieu-can-biet-ve-tong-dai-112-so-dien-thoai-tiep-nhan-thong-tin-va-noi-dung-thong-tin-ve-su-co-tham-hoa-119250714134442873.htm",
+      "publisher": "Cổng TTĐT Chính phủ",
+      "level": "publication",
+      "reviewedAt": "2026-10-11"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+name: VN App iOS compile
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'device biên dịch cho iPhone chưa ký; simulator chỉ chạy mô phỏng'
+        required: true
+        default: device
+        type: choice
+        options:
+          - device
+          - simulator
+permissions:
+  contents: read
+jobs:
+  compile:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - name: Build selected iOS target
+        env:
+          VN_APP_IOS_TARGET: ${{ inputs.target || 'device' }}
+        run: |
+          if [ "$VN_APP_IOS_TARGET" = simulator ]; then
+            npm run ios:simulator
+          else
+            npm run ios:device
+          fi
+      - name: Upload compiled app — not an iPhone installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: VN-App-iOS-${{ inputs.target || 'device' }}-unsigned
+          path: ios-build/Build/Products/**/*.app
+          if-no-files-found: error
+          retention-days: 1

@@ -1,0 +1,11 @@
+{
+  "schema": "vn-app-contacts/1",
+  "contacts": [
+    {
+      "name": "Nguyễn Văn A",
+      "position": "Nhân viên",
+      "phone": "",
+      "organization": "Đơn vị mẫu — sửa trước khi nhập"
+    }
+  ]
+}

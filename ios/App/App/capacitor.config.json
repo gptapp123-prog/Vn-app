@@ -1,0 +1,22 @@
+{
+	"appId": "vn.vnapp.citizen",
+	"appName": "VN App",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https"
+	},
+	"android": {
+		"allowMixedContent": false
+	},
+	"ios": {
+		"contentInset": "automatic"
+	},
+	"packageClassList": [
+		"AppPlugin",
+		"AppLauncherPlugin",
+		"CapacitorBarcodeScannerPlugin",
+		"CAPBrowserPlugin",
+		"FilesystemPlugin",
+		"SharePlugin"
+	]
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d2c5f"><meta name="description" content="VN App — tra cứu và điều hướng đến nguồn công khai chính thức; danh bạ tự nhập được lưu trên thiết bị.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self' blob:; script-src 'self'; style-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<title>VN App — Tiện ích số V3.11</title><link rel="icon" href="icon.svg"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skiplink" href="#routeBody">Bỏ qua điều hướng, đến nội dung</a>
+<div class="shell">
+ <aside class="sidebar" aria-label="Điều hướng chính">
+  <div class="brand"><div class="brandtext"><strong>VN<span> App</span></strong><small>TRUNG TÂM TIỆN ÍCH SỐ</small></div></div>
+  <div class="navlabel">DANH MỤC</div>
+  <nav class="navigation" id="desktopNav" aria-label="Điều hướng máy tính"></nav>
+  <div class="sidetip"><strong>Liên kết rõ nguồn gốc</strong><p>Chỉ dẫn tới cơ quan phát hành và kho ứng dụng chính thức.</p><span>Danh mục tĩnh · chưa kiểm tra trực tuyến</span></div>
+ </aside>
+ <div class="mainframe">
+  <header class="topbar"><button id="menuToggle" class="menu-toggle" aria-controls="desktopNav" aria-expanded="false" type="button">☰ Chức năng</button><div class="mobilebrand">VN <span>App</span></div><div class="breadcrumb">Tiện ích số <b>/</b> <span id="crumb">Tổng quan</span></div><span class="topchip">Tra cứu độc lập · Không tài khoản</span></header>
+  <main class="main" id="main">
+   <section class="hero" id="hero"><div class="heroeyebrow">VIỆC HÀNG NGÀY · ĐÚNG DỊCH VỤ</div><h1>Bạn cần <em>giải quyết việc gì?</em></h1><p>Nhập nhu cầu để tìm đúng ứng dụng, thủ tục hoặc trang thông tin từ cơ quan có thẩm quyền.</p>
+    <form id="searchForm" role="search"><label class="sr-only" for="searchInput">Tìm tác vụ</label><div class="searchwrap"><span class="searchglyph" aria-hidden="true"></span><input id="searchInput" autocomplete="off" maxlength="150" placeholder="Ví dụ: mất điện, làm hộ chiếu, tiền nước, khai sinh…"><button type="submit">Tìm nơi xử lý <span aria-hidden="true">→</span></button></div></form>
+    <div class="suggestions" id="suggestions"><span>Tra cứu nhanh:</span></div>
+   </section>
+   <section class="statusline"><span class="statusdot"></span><b>Thông tin từ nguồn công khai</b><span class="statussep">•</span><span>Không cần đăng nhập VN App</span><span class="statussep">•</span><span>Không lưu tìm kiếm</span></section>
+   <p class="privacyhint">Chỉ nhập tên việc cần làm. Không nhập CCCD, mật khẩu, OTP hoặc thông tin hồ sơ cá nhân.</p><p id="actionStatus" class="actionstatus" role="status" aria-live="polite"></p><div id="routeBody" tabindex="-1"></div>
+   <footer class="footer"><span>VN App • Bộ điều phối tác vụ V3.11</span><span>Không thuộc hoặc đại diện cho cơ quan nhà nước</span></footer>
+  </main>
+ </div>
+</div>
+<nav class="bottomnav" id="mobileNav" aria-label="Điều hướng điện thoại"></nav>
+<script src="data.js"></script><script src="engine.js"></script><script src="core/trust-registry.js"></script><script src="core/evidence.js"></script><script src="core/orchestrator.js"></script><script src="core/public-knowledge.js"></script><script src="core/water-routing.js"></script><script src="core/app-catalog.js"></script><script src="core/citizen-services.js"></script><script src="core/app-launch.js"></script><script src="reference-data.js"></script><script src="core/reference-directory.js"></script><script src="online.js"></script><script src="core/product-check.js"></script><script src="product-ui.js"></script><script src="core/direct-lookup.js"></script><script src="core/service-routing.js"></script><script src="core/personal-contacts.js"></script><script src="contacts-ui.js"></script><script src="script.js"></script>
+</body>
+</html>

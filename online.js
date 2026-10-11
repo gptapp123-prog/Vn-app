@@ -1,0 +1,2 @@
+/* Retire the prior offline package after the user selected online-only operation. */
+(() => {'use strict';if('serviceWorker' in navigator)navigator.serviceWorker.getRegistrations().then(regs=>Promise.all(regs.filter(r=>r.scope===new URL('./',location.href).href).map(r=>r.unregister()))).catch(()=>{});if('caches' in window)caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('vn-app-public-')).map(k=>caches.delete(k)))).catch(()=>{});})();
