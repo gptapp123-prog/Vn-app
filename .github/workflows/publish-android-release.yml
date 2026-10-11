@@ -15,7 +15,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: VN-App-Android-release
-          run-id: 38150680496
+          run-id: 38156457437
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: release-input
       - name: Restore verified signed installer
@@ -24,4 +24,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create v3.14.0 VN_App_V3_14_Android_Release.apk SHA256SUMS.txt --target f3e6b0c9ed48119c99f7e3aea575bdf7d6bfc230 --title "VN App 3.14 — Android" --notes "Bổ sung nút Đóng chức năng và sửa thao tác Quay lại. APK đã ký bằng khóa phát hành cố định, Android 8 trở lên. Chưa kiểm thử cài đặt trên điện thoại thật."
+          gh release create v3.15.0 VN_App_V3_15_Android_Release.apk SHA256SUMS.txt --target d28e8ed526a6b173570d9d9bec167053b975ddc7 --title "VN App 3.15 — Cài song song" --notes "Cài song song với VN App cũ, không cần gỡ và không xóa dữ liệu cũ. Biểu tượng mới: VN App Mới. Mã gói vn.vnapp.citizen.stable, chữ ký phát hành cố định. Có mục hướng dẫn nhập tệp sao lưu. Android 8 trở lên; chưa kiểm thử trên điện thoại thật."
