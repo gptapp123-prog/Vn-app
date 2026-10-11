@@ -4,3 +4,5 @@
 @media(max-width:350px){.main{padding-left:12px;padding-right:12px}.app-launcher{gap:7px}.app-tile-name{font-size:10px}.app-symbol{width:44px;height:44px}.hero h1{font-size:23px}.quick-grid button{font-size:10px}.citizengrid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}button,a,.app-tile{transition:none}}
 .sectionhead{border-left:0!important;padding-left:0!important;flex-direction:row;align-items:center}.sectionhead>div{min-width:0}.sectionhead>button{flex-shrink:0}.app-tile-main:focus-visible{outline-offset:-4px}
+
+.close-function{flex-shrink:0;min-height:44px;padding:8px 13px;border:1px solid #cbd7e8;border-radius:9px;background:#fff;color:#2458bd;font-weight:650;cursor:pointer}.close-function[hidden]{display:none!important}@media(max-width:780px){.topbar{position:sticky;top:0;z-index:60;flex-wrap:wrap}.close-function{margin-left:8px}.topbar .breadcrumb{display:none}}
