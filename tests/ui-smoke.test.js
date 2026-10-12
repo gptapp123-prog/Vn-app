@@ -83,3 +83,22 @@ html=search('làm hộ chiếu');assert.ok(html.includes('routeChoiceForm'));
 handlers['document:submit']({preventDefault(){},target:{id:'routeChoiceForm',dataset:{serviceId:'passport'},elements:{choice:{value:'chip'}}}});assert.ok(els.routeBody.innerHTML.includes('matt=35620'));
 html=search('cấp lại GPLX');assert.ok(html.includes('Chưa có đường dẫn cấp lại GPLX đã xác minh'));assert.ok(!html.split('<details')[0].includes('href="https://dichvucong.gov.vn/"'));
 console.log('PASS: function routing, explicit app preference, residence distinction, passport choice and source gaps.');
+
+// Regression: Vietnamese IME input must stay untouched until explicit submission.
+const beforeComposition=els.routeBody.innerHTML;
+els.searchInput.value='Tôi muốn đổi GPLX';
+handlers['searchInput:compositionstart']();
+handlers['searchForm:submit']({preventDefault(){}});
+assert.equal(els.routeBody.innerHTML,beforeComposition);
+assert.equal(els.searchInput.value,'Tôi muốn đổi GPLX');
+handlers['searchInput:compositionend']();
+handlers['searchForm:submit']({preventDefault(){}});
+assert(els.routeBody.innerHTML.includes('dvc-cap-doi-gplx.html'));
+assert.equal(els.searchInput.value,'Tôi muốn đổi GPLX');
+const beforeImeEnter=els.routeBody.innerHTML;
+els.searchInput.value='tiền nước';
+handlers['searchInput:keydown']({key:'Enter',isComposing:true,keyCode:229});
+handlers['searchForm:submit']({preventDefault(){}});
+assert.equal(els.routeBody.innerHTML,beforeImeEnter);
+assert.equal(handlers['searchInput:input'],undefined,'Typing must never schedule a search or rewrite text');
+console.log('PASS 3.18: IME composition/Enter guard and preserving submitted Vietnamese text.');
