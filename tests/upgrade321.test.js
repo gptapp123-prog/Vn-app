@@ -15,7 +15,7 @@ assert.equal(P.resolve('party-dues').service.appId,'icpvtthc');assert.equal(P.re
 for(const q of ['nop dang phi so the dang vien 12345678','Nộp đảng phí, số thẻ: 12345678','mã đảng viên 12345678']){const safe=E.sanitize(q);assert(safe.sensitive);assert(!safe.query.includes('12345678'));}assert(!E.sanitize('dang phi nam 2026').sensitive);
 for(const url of ['https://dichvucong.dcs.vn/evil','https://dichvucong.dcs.vn.evil.test/web/dvc/dich-vu-cong-cua-toi','javascript:alert(1)','https://user:password@dichvucong.dcs.vn/'])assert(!P.validUrl(url));
 for(const id of ['birth','marriage','civil-copy','business','maternity','pension'])assert.equal(S.route(id).status,'WEB');
-const ctx={VN_PUBLIC_SERVICES:P,VN_CITIZEN:require('../core/citizen-services')};ctx.window=ctx;vm.createContext(ctx);vm.runInContext(fs.readFileSync(require.resolve('../public-ui.js'),'utf8'),ctx);const UI=ctx.VN_PUBLIC_UI;UI.configure({legacy:id=>'<p>'+id+'</p>',app:id=>'<button>'+id+'</button>'});assert.equal(UI.topics.length,108);assert.equal(new Set(UI.topics.map(x=>x.id)).size,108);assert.equal(UI.journeys.length,9);
+const ctx={VN_ENGINE:E,VN_PUBLIC_SERVICES:P,VN_CITIZEN:require('../core/citizen-services')};ctx.window=ctx;vm.createContext(ctx);vm.runInContext(fs.readFileSync(require.resolve('../public-ui.js'),'utf8'),ctx);const UI=ctx.VN_PUBLIC_UI;UI.configure({legacy:id=>'<p>'+id+'</p>',app:id=>'<button>'+id+'</button>'});assert.equal(UI.topics.length,108);assert.equal(new Set(UI.topics.map(x=>x.id)).size,108);assert.equal(UI.journeys.length,9);
 UI.setMode('government');assert(UI.panel().includes('public-groups'));assert(!UI.panel().includes('publicChoiceForm'));UI.setMode('party');assert(UI.panel().includes('Công tác Đảng'));assert(!UI.panel().includes('Giấy phép xây dựng'));assert(UI.accept('nop dang phi'));assert(UI.panel().includes('icpvtthc'));assert(!UI.panel().includes('<button>icpv</button>'));UI.setMode('daily');assert(UI.setJourney('work'));const daily=UI.panel();assert(daily.includes('Trợ cấp thất nghiệp'));assert(!daily.includes('Giấy phép xây dựng'));assert(UI.select('land-certificate'));assert(UI.choose('land-first'));assert(UI.panel().includes('ma_thu_tuc=1.013978'));assert(!UI.choose('javascript:alert(1)'));assert(!UI.select('unknown'));
 const mobileWorkflow=fs.readFileSync(require.resolve('../.github/workflows/mobile-build.yml'),'utf8');
 assert(mobileWorkflow.includes('id: release_gate'));
@@ -25,3 +25,24 @@ assert(mobileWorkflow.includes('VN-App-Android-SIGNED-installable'));
 assert(mobileWorkflow.includes('VN-App-Android-UNSIGNED-not-installable'));
 assert(!mobileWorkflow.includes('path: android/app/build/outputs/apk/release/*.apk'));
 const suggestion=L.suggest('nop dang phii',P.SERVICES);assert.equal(suggestion.status,'SUGGESTED');assert.equal(suggestion.id,'party-dues');console.log('PASS 3.21 maintenance: 76 curated public topics, 108 unified topics, 9 daily journeys, Party app distinction, foreign/certificate case guards, privacy, pinned URLs and safe choices.');
+
+// Selecting a result must preserve its own case, without borrowing qualifiers
+// from another task. Exercise rendered UI, not only matcher output.
+assert.equal(P.match('không muốn nộp đảng phí, tôi cần giấy độc thân').services[0]?.id,'single');
+assert.equal(P.match('đừng chuyển sinh hoạt đảng, tôi muốn đăng ký kết hôn').services[0]?.id,'marriage');
+assert.equal(P.resolve('birth','đăng ký khai sinh không có yếu tố nước ngoài').service.id,'birth');
+assert.equal(P.resolve('marriage','kết hôn không có người nước ngoài').service.id,'marriage');
+assert.equal(P.resolve('birth','khai sinh có yếu tố nước ngoài').service.id,'birth-foreign');
+assert(UI.accept('đăng ký khai sinh và đăng ký kết hôn có yếu tố nước ngoài'));
+assert(UI.select('birth'));assert(UI.panel().includes('ma_thu_tuc=1.001193'));assert(!UI.panel().includes('ma_thu_tuc=1611'));
+assert(UI.accept('đăng ký khai sinh và đăng ký kết hôn có yếu tố nước ngoài'));
+assert(UI.select('marriage-foreign'));assert(UI.panel().includes('ma_thu_tuc=2608'));
+assert.equal(P.match('mất giấy khai sinh có yếu tố nước ngoài').services[0]?.id,'lost-birth');
+assert(UI.accept('mất giấy khai sinh có yếu tố nước ngoài và giấy độc thân'));
+assert(UI.select('lost-birth'));assert(UI.choose('rebirth'));assert(UI.panel().includes('nước ngoài'));
+assert(!UI.panel().includes('ma_thu_tuc=1.004884'));
+assert(UI.accept('khai sinh tại đại sứ quán và giấy độc thân'));
+assert(UI.select('birth'));assert(UI.panel().includes('lãnh sự'));assert(!UI.panel().includes('class="primary"'));
+UI.setMode('government');assert(UI.select('birth'));assert(UI.panel().includes('ma_thu_tuc=1.001193'));
+assert(UI.accept('không muốn nộp đảng phí, tôi cần giấy độc thân'));assert(UI.panel().includes('Xác nhận tình trạng hôn nhân'));
+console.log('PASS public case context: independent clauses, consular gap, foreign-case negation, choice context and navigation reset.');

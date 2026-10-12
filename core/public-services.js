@@ -1,5 +1,5 @@
 /* Public task routing only. No eligibility calculations or private Party-member database. */
-(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./language-understanding'):root.VN_LANGUAGE);if(typeof module==='object'&&module.exports)module.exports=api;else root.VN_PUBLIC_SERVICES=api;})(typeof window!=='undefined'?window:globalThis,function(L){
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./language-understanding'):root.VN_LANGUAGE,typeof module==='object'&&module.exports?require('../engine'):root.VN_ENGINE);if(typeof module==='object'&&module.exports)module.exports=api;else root.VN_PUBLIC_SERVICES=api;})(typeof window!=='undefined'?window:globalThis,function(L,E){
 'use strict';const DATA={
   "GROUPS": [
     {
@@ -65,6 +65,7 @@
     },
     {
       "id": "birth-foreign",
+      "covers": ["birth"],
       "title": "Khai sinh có yếu tố nước ngoài",
       "group": "family",
       "terms": [
@@ -106,6 +107,7 @@
     },
     {
       "id": "marriage-foreign",
+      "covers": ["marriage"],
       "title": "Kết hôn có yếu tố nước ngoài",
       "group": "family",
       "terms": [
@@ -185,6 +187,7 @@
     },
     {
       "id": "lost-birth",
+      "covers": ["birth"],
       "title": "Mất giấy khai sinh",
       "group": "family",
       "terms": [
@@ -1571,8 +1574,19 @@
 };
 const norm=L.normalize,contains=(q,t)=>(' '+q+' ').includes(' '+norm(t)+' '),urls=new Set([...DATA.SERVICES.flatMap(s=>[s.url,s.source]),...DATA.APPS.flatMap(a=>[a.android,a.ios,a.site])].filter(Boolean));
 function validUrl(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&urls.has(value);}catch{return false;}}
-function match(raw){const q=L.understand(raw).query;if(!q||/\b(?:khong|dung)\s+(?:(?:muon|can)\s+)?(?:nop|dong|lam|dang ky|tra|tim|chuyen)\b/.test(q))return {status:'NONE',services:[]};function single(part){const ranked=DATA.SERVICES.map(s=>({s,score:Math.max(0,...[s.title,...s.terms].filter(t=>contains(part,t)).map(t=>norm(t).length))})).filter(x=>x.score).sort((a,b)=>b.score-a.score);return ranked.length?ranked.filter(x=>x.score===ranked[0].score).map(x=>x.s):[];}let found=single(q);const parts=q.split(/\b(?:va|hoac)\b/);if(parts.length>1){const split=parts.flatMap(single);if(split.length>1)found=split;}found=[...new Map(found.map(s=>[s.id,s])).values()].filter(s=>!found.some(other=>other!==s&&other.covers?.includes(s.id)));return {status:found.length===1?'MATCH':found.length?'CHOICE':'NONE',services:found};}
+function match(raw){
+ const q=L.understand(E.focusQuery(raw)).query;
+ if(!q)return {status:'NONE',services:[],matchedQueries:{}};
+ function single(part){const lost=DATA.SERVICES.find(s=>s.id==='lost-birth');if(lost.terms.some(t=>contains(part,t))&&!DATA.SERVICES.filter(s=>['civil-copy','rebirth','rebirth-foreign'].includes(s.id)).some(s=>s.terms.some(t=>contains(part,t))))return [{service:lost,query:part}];const ranked=DATA.SERVICES.map(s=>({s,score:Math.max(0,...[s.title,...s.terms].filter(t=>contains(part,t)).map(t=>norm(t).length))})).filter(x=>x.score).sort((a,b)=>b.score-a.score);return ranked.length?ranked.filter(x=>x.score===ranked[0].score).map(x=>({service:x.s,query:part})):[];}
+ let hits=single(q);const parts=q.split(/\b(?:va|hoac)\b/);
+ if(parts.length>1){const split=parts.flatMap(single);if(split.length>1)hits=split;}
+ const found=[...new Map(hits.map(h=>[h.service.id,h.service])).values()].filter(s=>!hits.some(h=>h.service!==s&&h.service.covers?.includes(s.id)));
+ // Keep only the clause belonging to each offered task, so one person's
+ // foreign-case qualifier cannot change another task in the same request.
+ const matchedQueries=Object.fromEntries(found.map(s=>[s.id,hits.find(h=>h.service.id===s.id).query]));
+ return {status:found.length===1?'MATCH':found.length?'CHOICE':'NONE',services:found,matchedQueries};
+}
 
 function find(raw='',group=''){const words=L.understand(raw).query.split(' ').filter(Boolean);return DATA.SERVICES.filter(s=>(!group||s.group===group)&&words.every(w=>norm([s.title,...s.terms].join(' ')).split(' ').includes(w)));}
-function resolve(id,raw='',choice=''){let s=DATA.SERVICES.find(s=>s.id===id);if(!s)return {status:'UNKNOWN'};if(s.kind==='CHOICE'){if(!choice)return {status:'QUESTION',service:s};if(!s.choices.some(c=>c[0]===choice))return {status:'UNKNOWN'};return resolve(choice,raw);}const q=norm(raw);if(s.group==='family'&&/dai su quan|lanh su quan|tai nuoc ngoai/.test(q))return {status:'GAP',service:s,question:'Cần quốc gia và cơ quan đại diện lãnh sự để xác định đúng kênh; chưa mở thủ tục hộ tịch trong nước cho trường hợp này.'};if(['birth','marriage','rebirth','remarriage','death','adoption'].includes(id)&&/nuoc ngoai|nguoi ngoai quoc|quoc tich khac/.test(q)){const next=id+'-foreign';if(DATA.SERVICES.some(x=>x.id===next))s=DATA.SERVICES.find(x=>x.id===next);else return {status:'GAP',service:s,question:'Cần thủ tục có yếu tố nước ngoài; chưa có trang đúng trường hợp được xác minh.'};}return {status:s.kind,service:s};}
+function resolve(id,raw='',choice=''){let s=DATA.SERVICES.find(s=>s.id===id);if(!s)return {status:'UNKNOWN'};if(s.kind==='CHOICE'){if(!choice)return {status:'QUESTION',service:s};if(!s.choices.some(c=>c[0]===choice))return {status:'UNKNOWN'};return resolve(choice,raw);}const q=norm(raw).replace(/\bkhong\s+(?:co\s+)?(?:yeu to nuoc ngoai|nguoi nuoc ngoai|quoc tich khac)\b/g,' ');if(s.group==='family'&&/dai su quan|lanh su quan|tai nuoc ngoai/.test(q))return {status:'GAP',service:s,question:'Cần quốc gia và cơ quan đại diện lãnh sự để xác định đúng kênh; chưa mở thủ tục hộ tịch trong nước cho trường hợp này.'};if(['birth','marriage','rebirth','remarriage','death','adoption'].includes(id)&&/nuoc ngoai|nguoi ngoai quoc|quoc tich khac/.test(q)){const next=id+'-foreign';if(DATA.SERVICES.some(x=>x.id===next))s=DATA.SERVICES.find(x=>x.id===next);else return {status:'GAP',service:s,question:'Cần thủ tục có yếu tố nước ngoài; chưa có trang đúng trường hợp được xác minh.'};}return {status:s.kind,service:s};}
 return Object.freeze({...DATA,normalize:norm,validUrl,match,find,resolve});});

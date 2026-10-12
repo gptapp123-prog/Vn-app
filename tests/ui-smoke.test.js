@@ -102,3 +102,12 @@ handlers['searchForm:submit']({preventDefault(){}});
 assert.equal(els.routeBody.innerHTML,beforeImeEnter);
 assert.equal(handlers['searchInput:input'],undefined,'Typing must never schedule a search or rewrite text');
 console.log('PASS 3.18: IME composition/Enter guard and preserving submitted Vietnamese text.');
+
+handlers['searchInput:blur']();
+const request='đăng ký khai sinh và đăng ký kết hôn có yếu tố nước ngoài';
+html=search(request);assert(html.includes('data-public-topic="birth"'));assert.equal(els.searchInput.value,request);
+handlers['document:click']({target:{closest(selector){return selector==='[data-public-topic]'?{dataset:{publicTopic:'birth'}}:null;}}});
+assert(els.routeBody.innerHTML.includes('ma_thu_tuc=1.001193'));assert(!els.routeBody.innerHTML.includes('ma_thu_tuc=1611'));
+handlers['document:submit']({preventDefault(){},target:{id:'publicFilterForm',elements:{query:{value:'không muốn nộp đảng phí, tôi cần giấy độc thân'}}}});
+assert(els.routeBody.innerHTML.includes('Xác nhận tình trạng hôn nhân'));assert(!els.routeBody.innerHTML.includes('Mở iCPV TTHC'));
+console.log('PASS submitted public search and result selection preserve case context and input.');

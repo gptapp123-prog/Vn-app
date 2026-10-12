@@ -25,3 +25,12 @@
 2. Nhập lần lượt: `lịch sử nộp đảng phí`, `tôi đã nộp đảng phí chưa`, `tôi muốn nộp đảng phí`, `thủ tục đảng viên`.
 3. Xác minh phần đầu ra lịch sử khác phần nộp, mục trợ giúp không tự thanh toán.
 4. Với Android: không lấy file cài đặt từ artifact mang tên `UNSIGNED`. Để phát hành thật phải cấu hình keystore đúng, xác minh chữ ký và kiểm thử cài mới/nâng cấp trên máy thật.
+
+## Bản vá tiếp tục: giữ đúng ngữ cảnh từng thủ tục
+
+- Khi kết quả có nhiều việc, mỗi lựa chọn giữ phần câu thuộc chính việc đó. Ví dụ: “đăng ký khai sinh và đăng ký kết hôn có yếu tố nước ngoài” không gán yếu tố nước ngoài của kết hôn sang khai sinh.
+- Chọn kết quả và chọn tiếp trường hợp mất giấy tờ giữ ngữ cảnh nước ngoài/lãnh sự. Trường hợp chưa có nguồn đúng vẫn hiển thị giới hạn, không mở mặc định thủ tục trong nước.
+- “Không có yếu tố nước ngoài” và “không có người nước ngoài” không kích hoạt chuyển sang thủ tục nước ngoài.
+- Ô tìm trong danh mục dùng cùng bộ xử lý câu phủ định như tra cứu chính: “không muốn nộp đảng phí, tôi cần giấy độc thân” trả mục giấy độc thân.
+- Chuyển danh mục hoặc tình huống mới xóa ngữ cảnh lựa chọn cũ.
+- Có hồi quy ở bộ xử lý và đầu ra HTML của giao diện mô phỏng. Chưa kiểm thử máy thật; bản vá mã nguồn này không tự tạo APK đã ký.
