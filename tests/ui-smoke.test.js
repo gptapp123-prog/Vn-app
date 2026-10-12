@@ -8,7 +8,7 @@ const context={scrollTo(){},document:{getElementById:id=>els[id],addEventListene
 context.window=context;context.window.VN_ENGINE=require('../engine.js');
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(base,'data.js'),'utf8'),context,{filename:'data.js'});
-for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-data.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
+for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-data.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','core/admin-data.js','core/admin-conversion.js','admin-ui.js','core/identity-data.js','core/identity-prefix.js','core/lookup-keywords.js','lookup-ui.js','core/power-routing.js','power-ui.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
 assert.ok(els.routeBody.innerHTML.includes('app-launcher'));
 assert.ok(els.desktopNav.innerHTML.includes('Việc cần làm'));
 function search(q){els.searchInput.value=q;handlers['searchForm:submit']({preventDefault(){}});return els.routeBody.innerHTML;}
@@ -47,7 +47,7 @@ html=search('mã bưu chính Tam Dương Bắc');assert.ok(html.includes('Mã ng
 html=search('mã bưu chính Bình Chánh TPHCM');assert.ok(html.includes('X. Bình Chánh'));assert.ok(html.includes('#page='));
 html=search('danh bạ điện');assert.ok(html.includes('tel:1558'));assert.ok(!html.includes('tel:1900545454'));
 handlers['document:click']({target:{closest(selector){return selector==='[data-route]'?{dataset:{route:'directory'}}:null;}}});
-assert.ok(els.routeBody.innerHTML.includes('referenceForm'));
+assert.ok(els.routeBody.innerHTML.includes('lookup-hub'));assert.ok(!els.routeBody.innerHTML.includes('referenceForm'));
 handlers['document:click']({target:{closest(selector){return selector==='[data-reference-mode]'?{dataset:{referenceMode:'postal'}}:null;}}});
 handlers['document:submit']({preventDefault(){},target:{id:'referenceForm',elements:{query:{value:'03127'},province:{value:'31'}}}});
 assert.ok(els.routeBody.innerHTML.includes('Hải Phòng'));assert.ok(els.routeBody.innerHTML.includes('<strong>03127</strong>'));

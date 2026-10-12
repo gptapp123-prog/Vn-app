@@ -1,0 +1,5 @@
+(function(r,f){const api=f(typeof module==='object'&&module.exports?require('./identity-data'):r.VN_IDENTITY_DATA);if(typeof module==='object'&&module.exports)module.exports=api;if(r)r.VN_IDENTITY=api;})(typeof globalThis!=='undefined'?globalThis:this,function(D){'use strict';
+const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/gi,'d').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+function lookup(raw){const value=String(raw||'').trim();if(!/^\d{3}$/.test(value))return {status:'INVALID_PREFIX',rows:[],message:'Chỉ nhập 3 số đầu, không nhập cả số căn cước.'};const rows=D.rows.filter(r=>r.code===value);return {status:rows.length?'FOUND':'UNKNOWN_PREFIX',rows,message:rows.length?'':'Chưa có mã này trong bảng tỉnh/thành đã công bố. Có thể là mã quốc gia; không tự gán một tỉnh.'};}
+function find(raw){const q=norm(raw);if(/\d/.test(q))return lookup(q).rows;return q?D.rows.filter(r=>norm(r.name).includes(q)):[];}
+return {lookup,find,source:D.source,basis:D.basis,count:D.rows.length};});
