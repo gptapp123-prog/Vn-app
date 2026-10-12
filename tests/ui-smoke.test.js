@@ -132,3 +132,7 @@ handlers['document:click']({target:{closest(s){return s==='[data-route]'?{datase
 assert.equal((els.routeBody.innerHTML.match(/class="app-tile"/g)||[]).length,20);assert(els.routeBody.innerHTML.includes('data-open-app="momo"'));assert(els.routeBody.innerHTML.includes('data-open-app="payoo"'));
 handlers['document:click']({target:{closest(s){return s==='[data-app-detail]'?{dataset:{appDetail:'momo'}}:null;}}});assert(els.routeBody.innerHTML.includes('https://play.google.com/store/apps/details?id=com.mservice.momotransfer'));
 console.log('PASS 3.24 audit regressions: emergency priority, case status, mixed-query choice, validated selection and 20 home apps.');
+
+for(const q of ['tôi đã nộp đảng phí chưa','lịch sử nộp đảng phí']){const h=search(q);assert(h.includes('Nộp đảng phí')===false||h.includes('lịch sử'));assert(!h.includes('routeChoiceForm'));assert(h.includes('dichvucong.dcs.vn'));}
+assert(!search('tôi đã nộp thuế chưa').includes('Hồ sơ được nộp trên hệ thống nào?'));
+console.log('PASS Party-payment history and tax questions remain distinct from procedure case tracking.');

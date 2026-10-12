@@ -112,7 +112,7 @@ function emergencyQuery(query){
 }
 function caseStatusQuery(query){
  const q=norm(query);
- return /\b(?:tra cuu ho so|theo doi ho so|tinh trang ho so|tien do ho so|ket qua ho so)\b/.test(q)||(/\bho so\b/.test(q)&&/\b(?:da nop|chua|dang o dau|dang xu ly|da duyet|duoc giai quyet|khi nao|den dau)\b/.test(q))||/\bda\b.*\b(?:nop|dang ky)\b.*\bchua\b/.test(q);
+ return /\b(?:tra cuu ho so|theo doi ho so|tinh trang ho so|tien do ho so|ket qua ho so)\b/.test(q)||(/\bho so\b/.test(q)&&/\b(?:da nop|chua|dang o dau|dang xu ly|da duyet|duoc giai quyet|khi nao|den dau)\b/.test(q))||(/\bda\b.*\b(?:nop|dang ky)\b.*\bchua\b/.test(q)&&/\b(?:khai sinh|ket hon|ho chieu|can cuoc|cccd|tam tru|thuong tru|kinh doanh|dat dai|xay dung|giay phep)\b/.test(q));
 }
 function separateQueries(query){
  const parts=[...new Set(query.split(/\b(?:va|hoac)\b/).map(x=>x.trim()).filter(Boolean))];
