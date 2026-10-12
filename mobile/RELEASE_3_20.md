@@ -1,6 +1,6 @@
 # VN App 3.20
 
-40 nội dung mới trong 4 lĩnh vực: y tế (9), học hành (12), mua sắm (5), sửa chữa (14). Có 234 cụm từ khóa; 18 kênh/đơn vị với nguồn và ngày đối chiếu. 8 app bổ sung vào kho: Medpro, UMC Care, vnEdu Connect, VTVgo, Tiki, Shopee, Lazada, Samsung Members. Trang chủ giữ nhóm app thường dùng; lĩnh vực mở riêng tại thanh chức năng.
+40 nội dung mới trong 4 lĩnh vực: y tế (9), học hành (12), mua sắm (5), sửa chữa (14). Có 239 cụm từ khóa; 18 kênh/đơn vị với nguồn và ngày đối chiếu. 8 app bổ sung vào kho: Medpro, UMC Care, vnEdu Connect, VTVgo, Tiki, Shopee, Lazada, Samsung Members. Trang chủ giữ nhóm app thường dùng; lĩnh vực mở riêng tại thanh chức năng.
 
 ## Cách trả kết quả
 
