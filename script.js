@@ -101,7 +101,7 @@ function showResults(out,publicQuery,shouldScroll){
  $('routeBody').innerHTML=html;
  if(shouldScroll)window.scrollTo({top:0,behavior:'smooth'});
 }
-function directReference(found){return referencePanel();}
+function directReference(found){if(found.kind==='ADMIN')return section('Mã hành chính cấp tỉnh','',null,`<article class="panel"><h3>${esc(found.answer)}</h3>${referenceLink(R.data.sources.admin.url,'Nguồn mã hành chính')}<button type="button" data-route="admin">Mở quy đổi địa giới cũ–mới</button></article>`);return referencePanel();}
 function search(q,shouldScroll=true){
 window.VN_PRODUCT_UI?.stop();const safe=E.engine.sanitize(q);safe.query=E.engine.focusQuery(safe.query);if(safe.sensitive)$('searchInput').value=safe.query;routeQuery=safe.query;routeChoice='';setHero();if(!safe.sensitive&&/(?:check hang|kiem tra hang|xuat xu|truy xuat|ma qr|quet qr|ma vach)/.test(norm(safe.query))){route('products');return;}
  const keyword=!safe.sensitive?window.VN_KEYWORDS?.detect(safe.query):null;if(keyword&&['postal','plates','identity','contacts','agencies','power'].includes(keyword)){if(keyword==='contacts'){route('contacts');return;}if(keyword==='power'){window.VN_POWER_UI?.accept(safe.query);page='power';render();return;}referenceMode=keyword;referenceQuery=window.VN_KEYWORDS.query(safe.query,keyword);referenceProvince='';if(keyword==='agencies'){const places=R.provinces(safe.query);if(places.length===1){referenceProvince=places[0].id;for(const name of [places[0].name,...places[0].oldNames, ...(places[0].id==='79'?['TPHCM','TP HCM']:[])].map(norm).sort((a,b)=>b.length-a.length))referenceQuery=(' '+referenceQuery+' ').replace(' '+name+' ',' ').trim();}}referenceGroup='Tất cả';referenceLimit=6;page=keyword;render();return;}
