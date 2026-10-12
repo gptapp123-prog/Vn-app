@@ -111,3 +111,24 @@ assert(els.routeBody.innerHTML.includes('ma_thu_tuc=1.001193'));assert(!els.rout
 handlers['document:submit']({preventDefault(){},target:{id:'publicFilterForm',elements:{query:{value:'không muốn nộp đảng phí, tôi cần giấy độc thân'}}}});
 assert(els.routeBody.innerHTML.includes('Xác nhận tình trạng hôn nhân'));assert(!els.routeBody.innerHTML.includes('Mở iCPV TTHC'));
 console.log('PASS submitted public search and result selection preserve case context and input.');
+
+// Audit regressions: priority across domains, case status vs applying,
+// mixed clauses, and payment apps in the launcher.
+handlers['searchInput:blur']();
+for(const q of ['cháy nhà mất điện','cấp cứu cần số điện lực','cấp cứu và tra mã bưu chính','báo cháy và tra tiền nước','cấp cứu và nộp đảng phí']){
+ const h=search(q);assert(h.includes('tel:114')&&h.includes('tel:115'),q);assert(!h.includes('waterRegion'));assert(!h.includes('<h2>Mã bưu chính</h2>'));
+}
+for(const q of ['tôi đã nộp hồ sơ khai sinh chưa','hồ sơ kết hôn đang ở đâu','tôi đã đăng ký kết hôn chưa','theo dõi hồ sơ khai sinh']){
+ const h=search(q);assert(h.includes('routeChoiceForm'),q);assert(h.includes('Hồ sơ được nộp trên hệ thống nào?'));assert(!h.includes('ma_thu_tuc=1.001193'));assert(!h.includes('ma_thu_tuc=1.000894'));
+}
+assert(search('tiến độ hồ sơ đảng viên').includes('dichvucong.dcs.vn/web/dvc/dich-vu-cong-cua-toi'));
+for(const q of ['nộp đảng phí và BHYT','khai sinh và kiểm tra BHYT']){
+ const h=search(q);assert(h.includes('data-query-part="0"')&&h.includes('data-query-part="1"'));assert.equal(els.searchInput.value,q);
+ const before=h;handlers['document:click']({target:{closest(s){return s==='[data-query-part]'?{dataset:{queryPart:'999'}}:null;}}});assert.equal(els.routeBody.innerHTML,before);
+ handlers['document:click']({target:{closest(s){return s==='[data-query-part]'?{dataset:{queryPart:'1'}}:null;}}});assert(els.routeBody.innerHTML.includes('VssID')||els.routeBody.innerHTML.includes('baohiemxahoi.gov.vn'));
+}
+assert(!search('đừng gọi 114, tôi cần tra tiền nước').includes('tel:114'));
+handlers['document:click']({target:{closest(s){return s==='[data-route]'?{dataset:{route:'home'}}:null;}}});
+assert.equal((els.routeBody.innerHTML.match(/class="app-tile"/g)||[]).length,20);assert(els.routeBody.innerHTML.includes('data-open-app="momo"'));assert(els.routeBody.innerHTML.includes('data-open-app="payoo"'));
+handlers['document:click']({target:{closest(s){return s==='[data-app-detail]'?{dataset:{appDetail:'momo'}}:null;}}});assert(els.routeBody.innerHTML.includes('https://play.google.com/store/apps/details?id=com.mservice.momotransfer'));
+console.log('PASS 3.24 audit regressions: emergency priority, case status, mixed-query choice, validated selection and 20 home apps.');

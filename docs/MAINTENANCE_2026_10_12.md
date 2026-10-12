@@ -49,3 +49,13 @@
 - Các lối vào Nhà nước, công tác Đảng, đời sống và việc đã ghim chuyển xuống dưới trong mục “Các tính năng khác”, mặc định đóng. Bấm để mở khi cần.
 - Danh mục app tự lưu tải xong sẽ xuất hiện ngay trên trang chủ; không đòi chuyển sang Kho ứng dụng.
 - Phiên bản 3.23.0 / 32300 giữ mã gói và khóa ký cũ.
+
+## Bản sửa lỗi nghiệm thu 3.24
+
+- Ưu tiên câu khẩn cấp trước các nhánh điện, nước, địa giới, mã bưu chính và thủ tục. Không chuyển tiếp tin báo; chỉ hiển thị kênh liên hệ trực tiếp.
+- Câu hỏi trạng thái hồ sơ không mở thủ tục tạo mới; hỏi hệ thống đã nộp hồ sơ trước khi dẫn tới mục tra cứu. Hồ sơ TTHC Đảng giữ kênh riêng.
+- Câu nhiều nhu cầu khác nhóm có lựa chọn từng phần; giữ nguyên nội dung đã nhập, không bỏ phần BHYT. Lựa chọn chỉ nhận chỉ số trong danh sách đang hiển thị.
+- Giữ các luồng nhiều thủ tục cùng nhóm và nhiều loại hóa đơn đã có.
+- Trang chủ có đủ 20 app: bổ sung MoMo và Payoo từ mô-đun nước. Liên kết dùng đúng URL đã có, không đoán nguồn cài iOS.
+- Thêm hồi quy cho các câu lỗi tìm được ở bản 3.23, kiểm tra cả chuyển trang khi chọn việc và từ chối chỉ số ngoài danh sách.
+- Phiên bản 3.24.0 / 32400. Chưa nghiệm thu trên thiết bị vật lý; không thay đổi giới hạn dữ liệu địa giới, đồng bộ hoặc ký iOS.
