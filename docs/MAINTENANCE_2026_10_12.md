@@ -34,3 +34,10 @@
 - Ô tìm trong danh mục dùng cùng bộ xử lý câu phủ định như tra cứu chính: “không muốn nộp đảng phí, tôi cần giấy độc thân” trả mục giấy độc thân.
 - Chuyển danh mục hoặc tình huống mới xóa ngữ cảnh lựa chọn cũ.
 - Có hồi quy ở bộ xử lý và đầu ra HTML của giao diện mô phỏng. Chưa kiểm thử máy thật; bản vá mã nguồn này không tự tạo APK đã ký.
+
+## Chuẩn bị phát hành 3.22
+
+- Phiên bản 3.22.0 / 32200 cho Android và iOS; giữ nguyên mã gói và dữ liệu ứng dụng.
+- CI của bản vá 56da63b đã kiểm tra thành công; Android tạo được APK chưa ký. iOS compile không thay thế IPA ký để cài.
+- Đã lấy lại bản sao khóa phát hành từ tệp lưu riêng để ký cục bộ; khóa và mật khẩu không đưa vào kho mã nguồn. CI chưa có cấu hình khóa nên vẫn phân loại đầu ra chưa ký.
+- Bản mới phải xác minh chữ ký, nội dung đóng gói và số phiên bản trước khi cung cấp; chưa nghiệm thu điện thoại vật lý.
