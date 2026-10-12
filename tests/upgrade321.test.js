@@ -17,4 +17,11 @@ for(const url of ['https://dichvucong.dcs.vn/evil','https://dichvucong.dcs.vn.ev
 for(const id of ['birth','marriage','civil-copy','business','maternity','pension'])assert.equal(S.route(id).status,'WEB');
 const ctx={VN_PUBLIC_SERVICES:P,VN_CITIZEN:require('../core/citizen-services')};ctx.window=ctx;vm.createContext(ctx);vm.runInContext(fs.readFileSync(require.resolve('../public-ui.js'),'utf8'),ctx);const UI=ctx.VN_PUBLIC_UI;UI.configure({legacy:id=>'<p>'+id+'</p>',app:id=>'<button>'+id+'</button>'});assert.equal(UI.topics.length,108);assert.equal(new Set(UI.topics.map(x=>x.id)).size,108);assert.equal(UI.journeys.length,9);
 UI.setMode('government');assert(UI.panel().includes('public-groups'));assert(!UI.panel().includes('publicChoiceForm'));UI.setMode('party');assert(UI.panel().includes('Công tác Đảng'));assert(!UI.panel().includes('Giấy phép xây dựng'));assert(UI.accept('nop dang phi'));assert(UI.panel().includes('icpvtthc'));assert(!UI.panel().includes('<button>icpv</button>'));UI.setMode('daily');assert(UI.setJourney('work'));const daily=UI.panel();assert(daily.includes('Trợ cấp thất nghiệp'));assert(!daily.includes('Giấy phép xây dựng'));assert(UI.select('land-certificate'));assert(UI.choose('land-first'));assert(UI.panel().includes('ma_thu_tuc=1.013978'));assert(!UI.choose('javascript:alert(1)'));assert(!UI.select('unknown'));
+const mobileWorkflow=fs.readFileSync(require.resolve('../.github/workflows/mobile-build.yml'),'utf8');
+assert(mobileWorkflow.includes('id: release_gate'));
+assert(mobileWorkflow.includes('apksigner" verify --verbose --print-certs'));
+assert(mobileWorkflow.includes("if: steps.release_gate.outputs.installable == 'true'"));
+assert(mobileWorkflow.includes('VN-App-Android-SIGNED-installable'));
+assert(mobileWorkflow.includes('VN-App-Android-UNSIGNED-not-installable'));
+assert(!mobileWorkflow.includes('path: android/app/build/outputs/apk/release/*.apk'));
 const suggestion=L.suggest('nop dang phii',P.SERVICES);assert.equal(suggestion.status,'SUGGESTED');assert.equal(suggestion.id,'party-dues');console.log('PASS 3.21 maintenance: 76 curated public topics, 108 unified topics, 9 daily journeys, Party app distinction, foreign/certificate case guards, privacy, pinned URLs and safe choices.');
