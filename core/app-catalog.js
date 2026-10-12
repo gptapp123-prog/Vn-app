@@ -13,13 +13,15 @@ function storeUrl(raw){
 function iconData(value){return typeof value==='string'&&value.length<=350000&&/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(value)?value:'';}
 function validate(input){
  if(!input||typeof input.name!=='string'||!input.name.trim()||input.name.length>80)return {ok:false,message:'Nhập tên ứng dụng, tối đa 80 ký tự.'};
+ const packageName=input.kind==='device'&&typeof input.packageName==='string'&&input.packageName.length<=255&&/^[a-zA-Z][a-zA-Z0-9_]*(?:\.[a-zA-Z0-9_]+)+$/.test(input.packageName)?input.packageName:'';
+ if(input.kind==='device'&&(!packageName||!iconData(input.icon)))return {ok:false,message:'Ứng dụng từ điện thoại cần mã gói và icon hợp lệ. Chọn lại trên điện thoại.'};
  const android=input.android?storeUrl(input.android):'',ios=input.ios?storeUrl(input.ios):'';
- if(input.android&&!android||input.ios&&!ios||!android&&!ios)return {ok:false,message:'Dùng liên kết trực tiếp của ứng dụng trên Google Play hoặc App Store.'};
+ if(input.android&&!android||input.ios&&!ios||!android&&!ios&&!packageName)return {ok:false,message:'Dùng liên kết trực tiếp của ứng dụng trên Google Play hoặc App Store.'};
  if(android&&!android.startsWith('https://play.google.com/')||ios&&!ios.startsWith('https://apps.apple.com/'))return {ok:false,message:'Đặt đúng liên kết Android và iOS.'};
  if(input.icon&&!iconData(input.icon))return {ok:false,message:'Icon phải là ảnh PNG, JPG hoặc WebP hợp lệ, tối đa 256 KB.'};
  const group=GROUPS.includes(input.group)?input.group:'Khác';
  const bills=Array.isArray(input.bills)?[...new Set(input.bills.filter(x=>BILL_TYPES.includes(x)))]:[];
- return {ok:true,item:{id:android||ios,name:input.name.trim(),group,android,ios,bills,...(input.icon?{icon:iconData(input.icon)}:{}),sourceState:'USER_ADDED_UNVERIFIED'}};
+ return {ok:true,item:{id:packageName?'device:'+packageName:android||ios,...(packageName?{kind:'device',packageName}:{}),name:input.name.trim(),group,android,ios,bills,...(input.icon?{icon:iconData(input.icon)}:{}),sourceState:'USER_ADDED_UNVERIFIED'}};
 }
 function matchBilling(query){const q=String(query||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').toLowerCase();if(!/(hoa don|tien dien|tien nuoc|hoc phi|cuoc internet|cuoc dien thoai|phi chung cu|thanh toan.*(?:internet|truyen hinh|dien thoai|tra sau))/.test(q)&&!/^\s*thanh toan\s*$/.test(q))return null;
  const rules=[['Tiền điện',/tien dien|hoa don dien/],['Tiền nước',/tien nuoc|hoa don nuoc/],['Internet / truyền hình',/internet|truyen hinh/],['Điện thoại trả sau',/dien thoai|tra sau/],['Học phí',/hoc phi/],['Phí chung cư',/chung cu/]];

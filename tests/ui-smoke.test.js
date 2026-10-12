@@ -8,7 +8,7 @@ const context={scrollTo(){},document:{getElementById:id=>els[id],addEventListene
 context.window=context;context.window.VN_ENGINE=require('../engine.js');
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(base,'data.js'),'utf8'),context,{filename:'data.js'});
-for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
+for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-data.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
 assert.ok(els.routeBody.innerHTML.includes('app-launcher'));
 assert.ok(els.desktopNav.innerHTML.includes('Việc cần làm'));
 function search(q){els.searchInput.value=q;handlers['searchForm:submit']({preventDefault(){}});return els.routeBody.innerHTML;}
@@ -31,13 +31,13 @@ assert.ok(els.routeBody.innerHTML.includes('+ Thêm ứng dụng'));assert.ok(el
 console.log('PASS: billing search and add-app navigation UI.');
 html=search('thanh toán tiền nước Long An');assert.ok(html.includes('LAWACO'));assert.ok(!html.includes('data-open-water-app='));
 handlers['document:change']({target:{id:'waterProvider',value:'lawaco'}});
-assert.ok(els.routeBody.innerHTML.includes('Tôi đã đối chiếu'));assert.ok(!els.routeBody.innerHTML.includes('data-open-water-app='));
+assert.ok(els.routeBody.innerHTML.includes('Đúng đơn vị ghi trên hóa đơn'));assert.ok(!els.routeBody.innerHTML.includes('data-open-water-app='));
 handlers['document:change']({target:{id:'waterConfirmed',checked:true}});
-assert.ok(els.routeBody.innerHTML.includes('Mở ứng dụng MoMo'));assert.ok(els.routeBody.innerHTML.includes('Thanh toán trên kênh web Payoo'));
+assert.ok(els.routeBody.innerHTML.includes('Mở Payoo'));assert.ok(els.routeBody.innerHTML.includes('Thanh toán đúng đơn vị trên Payoo'));
 els.waterLaunchStatus={textContent:''};
-handlers['document:click']({target:{closest(selector){return selector==='[data-open-water-app]'?{dataset:{openWaterApp:'momo'}}:null;}}});
+handlers['document:click']({target:{closest(selector){return selector==='[data-open-water-app]'?{dataset:{openWaterApp:'payoo'}}:null;}}});
 assert.ok(els.waterLaunchStatus.textContent.includes('Bản web chưa có liên kết'));
-html=search('thanh toán tiền nước Bình Dương');assert.ok(html.includes('Chưa có đơn vị đủ chứng cứ'));assert.ok(!html.includes('data-open-water-app='));
+html=search('thanh toán tiền nước Bình Dương');assert.ok(html.includes('BIWASE'));assert.ok(!html.includes('data-open-water-app='));
 console.log('PASS: water provider confirmation UI, absent native launch and unknown rural coverage.');
 
 html=search('biển số 62');assert.ok(html.includes('Tây Ninh'));assert.ok(html.includes('62, 70'));assert.ok(!html.includes('Long An</th>'));
