@@ -40,6 +40,7 @@ public final class KnownAppLauncher {
         ids.put("shopee", "com.shopee.vn");
         ids.put("lazada", "com.lazada.android");
         ids.put("samsungmembers", "com.samsung.android.voc");
+        ids.put("icpvtthc", "com.vnpt.dvc.vptw");
         packages = Collections.unmodifiableMap(ids);
     }
     @JavascriptInterface

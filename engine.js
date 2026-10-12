@@ -38,6 +38,8 @@ const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 const contains=(s,phrase)=>(' '+s+' ').includes(' '+normalize(phrase)+' ');
 // Với biển số, số định danh, email, điện thoại: xóa khỏi chuỗi xử lý và khỏi UI trả lời.
 const SENSITIVE_PATTERNS=[
+  /\b(?:số|so)\s*(?:thẻ|the)(?:\s*(?:đảng|dang)\s*(?:viên|vien))?\s*[:#-]?\s*\d(?:[ .-]?\d){5,11}\b/gi,
+  /\b(?:mã|ma)\s*(?:số\s*|so\s*)?(?:đảng|dang)\s*(?:viên|vien)\s*[:#-]?\s*\d(?:[ .-]?\d){5,11}\b/gi,
   /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi,
   /(?:^|\D)(?:\+?84|0)(?:[ .-]?\d){9}(?!\d)/g,
   /\b\d{12}\b/g,
@@ -109,7 +111,7 @@ function selfCheck(){const bad=INTENTS.flatMap(t=>t.actions.filter(a=>!validUrl(
 function focusQuery(raw){
  const q=normalize(raw);
  // Keep semantic negations such as “không gắn chip”; remove only denied actions.
- return q.replace(/\b(?:khong|dung)\s+(?:(?:muon|can)\s+)?(?:doi|tra cuu|dang ky|nop|thanh toan|cap|lam|mo|tim|kiem tra|mua|sua|dat lich|huy don)\b.*?(?=\b(?:toi muon|toi can|muon|can|thay vao do|ma la|chi muon)\b|$)/g,' ').replace(/\s+/g,' ').trim();
+ return q.replace(/\b(?:khong|dung)\s+(?:(?:muon|can)\s+)?(?:doi|tra cuu|dang ky|nop|thanh toan|cap|lam|mo|tim|kiem tra|mua|sua|dat lich|huy don|dong|xin|chuyen|chung thuc)\b.*?(?=\b(?:toi muon|toi can|muon|can|thay vao do|ma la|chi muon)\b|$)/g,' ').replace(/\s+/g,' ').trim();
 }
 return Object.freeze({process,normalize,sanitize,focusQuery,validUrl,selfCheck,intents:INTENTS.map(x=>({id:x.id,task:x.task,name:x.name}))});
 });

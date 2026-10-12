@@ -207,5 +207,16 @@
     "height": 512,
     "storeTitle": "Samsung Members - Apps on Google Play",
     "retrievedAt": "2026-10-12"
+  },
+  "icpvtthc": {
+    "packageId": "com.vnpt.dvc.vptw",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.vnpt.dvc.vptw",
+    "storeTitle": "iCPV TTHC - Apps on Google Play",
+    "imageUrl": "https://play-lh.googleusercontent.com/zTVfamnwmPH66H3tcgAEDCjhuiZNR23WhBZs_TRG3Wad7hbZ7sql6ho8XWi1bRJf8jb9sjSlQ0EEOS-H1IiRl0Y=s0-br30",
+    "path": "assets/app-icons/icpvtthc.png",
+    "width": 512,
+    "height": 512,
+    "sha256": "fc6d2ec586e37530a45cce9f848b7efac5f43059c45f5b53313fbddbf09778e3",
+    "retrievedAt": "2026-10-12"
   }
 }

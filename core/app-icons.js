@@ -93,6 +93,11 @@ const icons=Object.freeze({
   "samsungmembers": {
     "android": "https://play.google.com/store/apps/details?id=com.samsung.android.voc",
     "path": "assets/app-icons/samsungmembers.png"
+  },
+  "icpvtthc": {
+    "path": "assets/app-icons/icpvtthc.png",
+    "android": "https://play.google.com/store/apps/details?id=com.vnpt.dvc.vptw",
+    "ios": "https://apps.apple.com/vn/app/icpv-tthc/id6757136196"
   }
 });
 function resolve(app){if(!app)return '';const direct=Object.hasOwn(icons,app.id)?icons[app.id]:null;if(direct)return direct.path;const item=Object.values(icons).find(x=>(app.android&&x.android===app.android)||(app.ios&&x.ios===app.ios));return item?item.path:'';}

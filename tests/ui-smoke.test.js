@@ -8,7 +8,7 @@ const context={scrollTo(){},document:{getElementById:id=>els[id],addEventListene
 context.window=context;context.window.VN_ENGINE=require('../engine.js');
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(base,'data.js'),'utf8'),context,{filename:'data.js'});
-for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-data.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','core/admin-data.js','core/admin-conversion.js','admin-ui.js','core/identity-data.js','core/identity-prefix.js','core/lookup-keywords.js','lookup-ui.js','core/power-routing.js','power-ui.js','core/language-understanding.js','core/life-services.js','life-ui.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
+for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-data.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','core/admin-data.js','core/admin-conversion.js','admin-ui.js','core/identity-data.js','core/identity-prefix.js','core/lookup-keywords.js','lookup-ui.js','core/power-routing.js','power-ui.js','core/language-understanding.js','core/life-services.js','life-ui.js','core/public-services.js','public-ui.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
 assert.ok(els.routeBody.innerHTML.includes('app-launcher'));
 assert.ok(els.desktopNav.innerHTML.includes('Việc cần làm'));
 function search(q){els.searchInput.value=q;handlers['searchForm:submit']({preventDefault(){}});return els.routeBody.innerHTML;}
@@ -58,7 +58,7 @@ html=search('lệ phí hộ chiếu bao nhiêu');assert.ok(html.includes('Cần 
 html=search('đặt lịch khám');assert.ok(html.includes('Cần biết tên cơ sở khám'));assert.ok(!html.includes('dichvucongbyt.moh.gov.vn'));
 html=search('nhà tôi mất điện');assert.ok(html.includes('tel:1558'));assert.ok(!html.includes('EVN CSKH</div>'));
 html=search('mất nước');assert.ok(html.includes('đối chiếu tên đơn vị'));assert.ok(!html.includes('data-open-water-app'));
-html=search('bản sao giấy khai sinh');assert.ok(html.includes('Xin bản sao giấy tờ hộ tịch'));assert.ok(html.includes('địa phương nào'));assert.ok(!html.includes('Có nhiều nhu cầu khớp'));
+html=search('bản sao giấy khai sinh');assert.ok(html.includes('Bản sao trích lục hộ tịch'));assert.ok(html.includes('ma_thu_tuc=2.000635'));assert.ok(!html.includes('địa phương nào'));assert.ok(!html.includes('Có nhiều nhu cầu khớp'));
 html=search('vừa sinh con');assert.ok(html.includes('Gia đình vừa có em bé'));assert.ok(html.includes('data-service="maternity"'));
 handlers['document:click']({target:{closest(s){return s==='[data-service]'?{dataset:{service:'passport'}}:null;}}});
 assert.ok(els.routeBody.innerHTML.includes('Danh sách tự kiểm tra'));

@@ -19,4 +19,5 @@
     <package android:name="com.shopee.vn" xmlns:android="http://schemas.android.com/apk/res/android" />
     <package android:name="com.lazada.android" xmlns:android="http://schemas.android.com/apk/res/android" />
     <package android:name="com.samsung.android.voc" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="com.vnpt.dvc.vptw" xmlns:android="http://schemas.android.com/apk/res/android" />
 </queries>
