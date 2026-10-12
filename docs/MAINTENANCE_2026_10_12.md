@@ -70,3 +70,12 @@
 - Chỉ sử dụng đích có trong danh mục hiện có; không tạo URL từ câu hỏi. Thông tin nhận diện cá nhân không đi qua bộ nhận diện này.
 - Đây là bộ quy tắc cục bộ mở rộng, chưa phải model AI hoặc bảo đảm hiểu mọi câu hỏi. Phạm vi nguồn và chức năng của các hệ thống ngoài vẫn giữ nguyên giới hạn.
 - Có hồi quy câu tự nhiên, nguồn trả về, tên đơn vị, dữ liệu riêng tư, câu nhiều nhu cầu và ngoài danh mục. Phiên bản 3.25.0 / 32500.
+
+## Tên hiển thị và gói cài 3.26
+
+- Tên người dùng nằm trên “Bạn cần tra cứu gì?” ở trang chủ. Bấm biểu tượng bút hoặc vào “Thêm & hiển thị → Tên hiển thị” để đổi tên.
+- Lưu tùy chọn bằng IndexedDB riêng trên thiết bị, tối đa 60 ký tự; để trống để bỏ tên. Không tạo tài khoản, gửi mạng hoặc dùng localStorage.
+- Lưu thất bại giữ nguyên tên cũ; tải tên nền không ghi đè dữ liệu người dùng đang nhập. Tên không ảnh hưởng bộ nhận diện câu hỏi.
+- Có kiểm tra lưu/đọc lại qua IndexedDB mô phỏng, đổi/bỏ tên và dữ liệu không hợp lệ. Chưa nghiệm thu trên điện thoại thật.
+- Người dùng tiếp tục báo “Gói không hợp lệ” khi cài 3.25. Bản khôi phục có cấu trúc/chữ ký hợp lệ trên máy kiểm tra; chưa có log Package Installer để xác định nguyên nhân trên điện thoại.
+- Bản 3.26 dùng cùng mã gói/chứng chỉ, tăng versionCode 32600, ký v1/v2/v3 và cung cấp tệp tên mới trong ZIP. Cần kiểm tra cả bản tải lại, không chỉ tệp trước khi lưu.
