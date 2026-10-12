@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const root=path.join(__dirname,'..'),ctx={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'data.js'),'utf8'),ctx);
 const registry=require('../core/app-icons'),water=require('../core/water-routing'),sources=JSON.parse(fs.readFileSync(path.join(root,'assets/app-icons/sources.json'),'utf8'));
-const apps=[...ctx.window.VN_DATA.apps,...Object.values(water.APPS)];
+const apps=[...ctx.window.VN_DATA.apps,...Object.values(water.APPS),...require('../core/life-services').APPS];
 for(const app of apps){
  const file=registry.resolve(app);assert(file,`Missing official icon: ${app.id}`);
  const source=sources[app.id];assert(source,`Missing source: ${app.id}`);

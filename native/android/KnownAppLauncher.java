@@ -32,6 +32,14 @@ public final class KnownAppLauncher {
         ids.put("help114", "com.mobicall.mobicall114");
         ids.put("momo", "com.mservice.momotransfer");
         ids.put("payoo", "vn.payoo");
+        ids.put("medpro", "vn.com.medpro");
+        ids.put("umccare", "vn.com.umc.patient");
+        ids.put("vnedu", "com.vnptit.vnedu.parent");
+        ids.put("vtvgo", "vn.vtv.vtvgo");
+        ids.put("tiki", "vn.tiki.app.tikiandroid");
+        ids.put("shopee", "com.shopee.vn");
+        ids.put("lazada", "com.lazada.android");
+        ids.put("samsungmembers", "com.samsung.android.voc");
         packages = Collections.unmodifiableMap(ids);
     }
     @JavascriptInterface

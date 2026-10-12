@@ -119,5 +119,93 @@
     "height": 512,
     "sha256": "3c35e1ed772f77167b674a70bad999b0ee23324b8ec0c4308e74f2ff5a048b39",
     "retrievedAt": "2026-10-11"
+  },
+  "medpro": {
+    "packageId": "vn.com.medpro",
+    "storeUrl": "https://play.google.com/store/apps/details?id=vn.com.medpro",
+    "imageUrl": "https://play-lh.googleusercontent.com/sO2373cl3d5fX2BIhRl7Vv50xzWnCoi_fRbgNVEb1DCU9jjRvck2sBI1tMAHGc7X_0jcqwW5Yo8DzPR0AJjHvks=s0-br30",
+    "path": "assets/app-icons/medpro.png",
+    "sha256": "62f27b124ac3cd9f9a9deae3c94bb282aacc1684a73e072f827e4d052c392a6d",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "Medpro - Đặt Lịch Khám Bệnh - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
+  },
+  "umccare": {
+    "packageId": "vn.com.umc.patient",
+    "storeUrl": "https://play.google.com/store/apps/details?id=vn.com.umc.patient",
+    "imageUrl": "https://play-lh.googleusercontent.com/7ccFFMuwwpBQMWbQlASTm2sPw70dqXlJUIylgqHiCx9WSDv2CauYAiYgUkl9MvjmeUF9od8Qeb9NGR7-3fm-yg=s0-br30",
+    "path": "assets/app-icons/umccare.png",
+    "sha256": "d79e0daf4fa3d3c0faec7766e2ca67d759385194d72280e43f04b725cecc4733",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "UMC Care - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
+  },
+  "vnedu": {
+    "packageId": "com.vnptit.vnedu.parent",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.vnptit.vnedu.parent",
+    "imageUrl": "https://play-lh.googleusercontent.com/OtBchnI7u3ceDllphpnxaySVCGT1MpALptJf3zPJ7v0PxjvTptE42AYqubtJVurKionTMWLJZ5cSksM0BGQE=s0-br30",
+    "path": "assets/app-icons/vnedu.png",
+    "sha256": "cb44062923dd5af74ddf12afa8381ae735d2662f5a257eab2f533e3fba112e3d",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "vnEdu Connect - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
+  },
+  "vtvgo": {
+    "packageId": "vn.vtv.vtvgo",
+    "storeUrl": "https://play.google.com/store/apps/details?id=vn.vtv.vtvgo",
+    "imageUrl": "https://play-lh.googleusercontent.com/XUuKqcHCJTx-bxEAO6nCObSqvO9y1FEmU8wrW7uJNdxSHGK_txbYEm6441fk26mW0_n4sLPL5DEX1lu6DDgX=s0-br30",
+    "path": "assets/app-icons/vtvgo.png",
+    "sha256": "978928b0c85f020c069ea12fc86ad39e54007e58208fc8102b979710840c7761",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "VTV Go - TV Mọi nơi, Mọi lúc - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
+  },
+  "tiki": {
+    "packageId": "vn.tiki.app.tikiandroid",
+    "storeUrl": "https://play.google.com/store/apps/details?id=vn.tiki.app.tikiandroid",
+    "imageUrl": "https://play-lh.googleusercontent.com/jRIIaXg1uuwvlswcjdsAIMVjLOCL1pe4pLhMNHoTZbGqhpcEfSFh1_v3sR1SAUDoYeo60ODLA2ltDH1ApYDLis8=s0-br30",
+    "path": "assets/app-icons/tiki.png",
+    "sha256": "ee2fb67206651e8433631600ce8f02375c5f0f82f9b046ae560f2396d2624847",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "Tiki - Tốt & Nhanh - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
+  },
+  "shopee": {
+    "packageId": "com.shopee.vn",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.shopee.vn",
+    "imageUrl": "https://play-lh.googleusercontent.com/eWqIz3EwFjKpl74AuybWP_phXLV_KO172GrDHjK110Z6AffNLhUvrHw9fmR4vEFdzeDUTNXoGxz5-eILCDJTHA=s0-br30",
+    "path": "assets/app-icons/shopee.png",
+    "sha256": "242b9a5085ed91ae4b2085ca86dc44ffe5d77b23df94db85db00824e87d6adfd",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "10.10 Shopee Thương Hiệu - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
+  },
+  "lazada": {
+    "packageId": "com.lazada.android",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.lazada.android",
+    "imageUrl": "https://play-lh.googleusercontent.com/9uh76LzzvIG4OrcZnrh19aV_Eskqbjn45zqQco36rvjasebQ-DN3XEb3Ar2lY2TBvtGKBCaeZhZ9eDbaveJmxg=s0-br30",
+    "path": "assets/app-icons/lazada.png",
+    "sha256": "ec11b3938a5572f09e4d219724218cdaf423efcd96159d2936923b7ef928d7b0",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "Lazada 10.10 Sale Đỉnh - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
+  },
+  "samsungmembers": {
+    "packageId": "com.samsung.android.voc",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.samsung.android.voc",
+    "imageUrl": "https://play-lh.googleusercontent.com/WjapbcDgRH9VbkqWWXkPdI3ewNQCAWuWkKPGPjBr5zwOM6ujmF8FPe4dt_DwVLCTk9dzsR2KE4YrIp2pCQz9UQ=s0-br30",
+    "path": "assets/app-icons/samsungmembers.png",
+    "sha256": "695ede33f90e1a8e11dfd469e61dfe4bee0cf6b40522113b56ce767277a4f4dc",
+    "width": 512,
+    "height": 512,
+    "storeTitle": "Samsung Members - Apps on Google Play",
+    "retrievedAt": "2026-10-12"
   }
 }

@@ -52,6 +52,14 @@
     <package android:name="com.bhxhapp" xmlns:android="http://schemas.android.com/apk/res/android" />
     <package android:name="com.ots.cbkc.catp" xmlns:android="http://schemas.android.com/apk/res/android" />
     <package android:name="com.mobicall.mobicall114" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <package android:name="vn.com.medpro" />
+    <package android:name="vn.com.umc.patient" />
+    <package android:name="com.vnptit.vnedu.parent" />
+    <package android:name="vn.vtv.vtvgo" />
+    <package android:name="vn.tiki.app.tikiandroid" />
+    <package android:name="com.shopee.vn" />
+    <package android:name="com.lazada.android" />
+    <package android:name="com.samsung.android.voc" />
 </queries>
 
     <!-- Permissions -->

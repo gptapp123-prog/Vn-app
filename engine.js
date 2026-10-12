@@ -109,7 +109,7 @@ function selfCheck(){const bad=INTENTS.flatMap(t=>t.actions.filter(a=>!validUrl(
 function focusQuery(raw){
  const q=normalize(raw);
  // Keep semantic negations such as “không gắn chip”; remove only denied actions.
- return q.replace(/\b(?:khong|dung)\s+(?:(?:muon|can)\s+)?(?:doi|tra cuu|dang ky|nop|thanh toan|cap|lam|mo|tim|kiem tra)\b.*?(?=\b(?:toi muon|toi can|muon|can|thay vao do|ma la|chi muon)\b|$)/g,' ').replace(/\s+/g,' ').trim();
+ return q.replace(/\b(?:khong|dung)\s+(?:(?:muon|can)\s+)?(?:doi|tra cuu|dang ky|nop|thanh toan|cap|lam|mo|tim|kiem tra|mua|sua|dat lich|huy don)\b.*?(?=\b(?:toi muon|toi can|muon|can|thay vao do|ma la|chi muon)\b|$)/g,' ').replace(/\s+/g,' ').trim();
 }
 return Object.freeze({process,normalize,sanitize,focusQuery,validUrl,selfCheck,intents:INTENTS.map(x=>({id:x.id,task:x.task,name:x.name}))});
 });
