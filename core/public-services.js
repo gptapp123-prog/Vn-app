@@ -1214,6 +1214,43 @@
       "route": "agencies"
     },
     {
+      "id": "party-assistant",
+      "title": "Chọn nghiệp vụ công tác Đảng",
+      "group": "party",
+      "terms": [
+        "thu tuc dang vien",
+        "nghiep vu dang",
+        "chuc nang cong tac dang",
+        "dich vu cong dang",
+        "viec can lam cua dang vien"
+      ],
+      "kind": "CHOICE",
+      "reviewedAt": "2026-10-12",
+      "question": "Bạn cần thực hiện việc nào? VN App chỉ dẫn tới nguồn chính thức, không xử lý hồ sơ hoặc đảng phí.",
+      "choices": [
+        [
+          "party-dues",
+          "Nộp đảng phí"
+        ],
+        [
+          "party-dues-history",
+          "Kiểm tra đã nộp đảng phí"
+        ],
+        [
+          "party-transfer",
+          "Chuyển sinh hoạt Đảng"
+        ],
+        [
+          "party-files",
+          "Theo dõi hồ sơ TTHC Đảng"
+        ],
+        [
+          "party-book",
+          "Sổ tay đảng viên"
+        ]
+      ]
+    },
+    {
       "id": "party-dues",
       "title": "Nộp đảng phí",
       "group": "party",
@@ -1255,6 +1292,12 @@
       "group": "party",
       "terms": [
         "lich su dang phi",
+        "lich su nop dang phi",
+        "kiem tra lich su nop dang phi",
+        "da nop dang phi",
+        "da dong dang phi",
+        "kiem tra da nop dang phi",
+        "nop dang phi chua",
         "kiem tra dang phi",
         "tra cuu dang phi",
         "dang phi da nop"

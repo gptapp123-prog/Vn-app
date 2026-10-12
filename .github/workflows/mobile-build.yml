@@ -49,10 +49,35 @@ jobs:
           VN_APP_ANDROID_KEY_ALIAS: ${{ secrets.VN_APP_ANDROID_KEY_ALIAS }}
           VN_APP_ANDROID_KEY_PASSWORD: ${{ secrets.VN_APP_ANDROID_KEY_PASSWORD }}
         run: python3 scripts/sign-android.py
+      - name: Verify installer signature and classify artifact
+        id: release_gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          signed="android/app/build/outputs/apk/release/VN-App-Android-release.apk"
+          unsigned="android/app/build/outputs/apk/release/app-release-unsigned.apk"
+          if [[ -f "$signed" ]]; then
+            "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs "$signed"
+            echo "installable=true" >> "$GITHUB_OUTPUT"
+          elif [[ -f "$unsigned" ]]; then
+            echo "::warning::Release APK is unsigned. Artifact is NOT INSTALLABLE; configure the fixed Android signing key."
+            echo "installable=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Android build produced no expected APK."
+            exit 1
+          fi
       - uses: actions/upload-artifact@v4
+        if: steps.release_gate.outputs.installable == 'true'
         with:
-          name: VN-App-Android-release
-          path: android/app/build/outputs/apk/release/*.apk
+          name: VN-App-Android-SIGNED-installable
+          path: android/app/build/outputs/apk/release/VN-App-Android-release.apk
+          if-no-files-found: error
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        if: steps.release_gate.outputs.installable != 'true'
+        with:
+          name: VN-App-Android-UNSIGNED-not-installable
+          path: android/app/build/outputs/apk/release/app-release-unsigned.apk
           if-no-files-found: error
           retention-days: 1
   ios-simulator:
