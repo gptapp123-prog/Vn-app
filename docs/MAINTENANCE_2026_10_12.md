@@ -41,3 +41,11 @@
 - CI của bản vá 56da63b đã kiểm tra thành công; Android tạo được APK chưa ký. iOS compile không thay thế IPA ký để cài.
 - Đã lấy lại bản sao khóa phát hành từ tệp lưu riêng để ký cục bộ; khóa và mật khẩu không đưa vào kho mã nguồn. CI chưa có cấu hình khóa nên vẫn phân loại đầu ra chưa ký.
 - Bản mới phải xác minh chữ ký, nội dung đóng gói và số phiên bản trước khi cung cấp; chưa nghiệm thu điện thoại vật lý.
+
+## Giao diện 3.23 theo yêu cầu
+
+- Đưa toàn bộ app thuộc danh mục đang nạp (20 app chính thức và app người dùng đã thêm) lên đầu nội dung trang chủ, ngay dưới phần tra cứu giữ nguyên.
+- Giữ nguyên ô tra cứu, nút gửi, gợi ý nhanh và mục Tra cứu nhanh.
+- Các lối vào Nhà nước, công tác Đảng, đời sống và việc đã ghim chuyển xuống dưới trong mục “Các tính năng khác”, mặc định đóng. Bấm để mở khi cần.
+- Danh mục app tự lưu tải xong sẽ xuất hiện ngay trên trang chủ; không đòi chuyển sang Kho ứng dụng.
+- Phiên bản 3.23.0 / 32300 giữ mã gói và khóa ký cũ.
