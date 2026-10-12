@@ -59,3 +59,14 @@
 - Trang chủ có đủ 20 app: bổ sung MoMo và Payoo từ mô-đun nước. Liên kết dùng đúng URL đã có, không đoán nguồn cài iOS.
 - Thêm hồi quy cho các câu lỗi tìm được ở bản 3.23, kiểm tra cả chuyển trang khi chọn việc và từ chối chỉ số ngoài danh sách.
 - Phiên bản 3.24.0 / 32400. Chưa nghiệm thu trên thiết bị vật lý; không thay đổi giới hạn dữ liệu địa giới, đồng bộ hoặc ký iOS.
+
+## Nâng cấp hỏi bằng câu tự nhiên 3.25
+
+- Thêm 40 quy tắc tình huống nối tới tác vụ đã có nguồn, bao gồm hộ tịch, chứng thực, nhà đất, an sinh, công tác Đảng, bảo hiểm, khám bệnh, học tập, đơn hàng và thiết bị hỏng.
+- Người dùng không cần gõ đúng tên thủ tục. Ví dụ: “bé mới chào đời cần làm giấy gì”, “bản photo cần đóng dấu”, “máy giặt LG không vắt”, “gói hàng bao giờ tới”.
+- Giữ tên cơ sở, hãng thiết bị và ngữ cảnh nước ngoài khi mở tác vụ. Không sửa nội dung đang gõ; không sửa tên thuốc hoặc suy ra chẩn đoán.
+- Một nhu cầu đủ rõ mở trực tiếp màn hình nguồn/app. Chỉ hỏi thêm khi thiếu cơ sở, hãng, hệ thống hoặc có nhiều việc khác nhau.
+- Câu có nhiều tình huống mới vẫn được tách để chọn từng việc, tránh dùng ngữ cảnh của việc này cho việc khác.
+- Chỉ sử dụng đích có trong danh mục hiện có; không tạo URL từ câu hỏi. Thông tin nhận diện cá nhân không đi qua bộ nhận diện này.
+- Đây là bộ quy tắc cục bộ mở rộng, chưa phải model AI hoặc bảo đảm hiểu mọi câu hỏi. Phạm vi nguồn và chức năng của các hệ thống ngoài vẫn giữ nguyên giới hạn.
+- Có hồi quy câu tự nhiên, nguồn trả về, tên đơn vị, dữ liệu riêng tư, câu nhiều nhu cầu và ngoài danh mục. Phiên bản 3.25.0 / 32500.

@@ -8,7 +8,7 @@ const context={scrollTo(){},document:{getElementById:id=>els[id],addEventListene
 context.window=context;context.window.VN_ENGINE=require('../engine.js');
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(base,'data.js'),'utf8'),context,{filename:'data.js'});
-for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-data.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','core/admin-data.js','core/admin-conversion.js','admin-ui.js','core/identity-data.js','core/identity-prefix.js','core/lookup-keywords.js','lookup-ui.js','core/power-routing.js','power-ui.js','core/language-understanding.js','core/life-services.js','life-ui.js','core/public-services.js','public-ui.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
+for(const file of ['core/trust-registry.js','core/evidence.js','core/orchestrator.js','core/water-data.js','core/water-routing.js','core/app-icons.js','core/app-catalog.js','core/citizen-services.js','core/app-launch.js','reference-data.js','core/reference-directory.js','core/direct-lookup.js','core/service-routing.js','core/admin-data.js','core/admin-conversion.js','admin-ui.js','core/identity-data.js','core/identity-prefix.js','core/lookup-keywords.js','lookup-ui.js','core/power-routing.js','power-ui.js','core/language-understanding.js','core/life-services.js','life-ui.js','core/public-services.js','public-ui.js','core/question-router.js','script.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context,{filename:file});
 assert.ok(els.routeBody.innerHTML.includes('app-launcher'));
 assert.ok(els.desktopNav.innerHTML.includes('Việc cần làm'));
 function search(q){els.searchInput.value=q;handlers['searchForm:submit']({preventDefault(){}});return els.routeBody.innerHTML;}
@@ -136,3 +136,25 @@ console.log('PASS 3.24 audit regressions: emergency priority, case status, mixed
 for(const q of ['tôi đã nộp đảng phí chưa','lịch sử nộp đảng phí']){const h=search(q);assert(h.includes('Nộp đảng phí')===false||h.includes('lịch sử'));assert(!h.includes('routeChoiceForm'));assert(h.includes('dichvucong.dcs.vn'));}
 assert(!search('tôi đã nộp thuế chưa').includes('Hồ sơ được nộp trên hệ thống nào?'));
 console.log('PASS Party-payment history and tax questions remain distinct from procedure case tracking.');
+
+// Natural question routing must reach a reviewed destination, keep provider
+// context, and leave the user's text untouched.
+for(const [q,title] of [
+ ['Bé nhà tôi mới chào đời, cần làm giấy gì?', 'Đăng ký khai sinh'],
+ ['Tôi cần giấy chứng minh mình chưa kết hôn', 'Xác nhận tình trạng hôn nhân'],
+ ['Bản photo của tôi cần đóng dấu ở đâu?', 'Chứng thực bản sao'],
+ ['Ông tôi qua đời thì làm giấy gì?', 'Đăng ký khai tử'],
+ ['Tôi bị cho nghỉ, muốn tìm tiền hỗ trợ thất nghiệp', 'Trợ cấp thất nghiệp'],
+ ['Tôi bán hàng tại nhà, đăng ký thủ tục ở đâu?', 'Đăng ký hộ kinh doanh'],
+ ['Tôi là đảng viên, chuyển chỗ làm thì đổi nơi sinh hoạt thế nào?', 'Chuyển sinh hoạt Đảng']
+ ]){const h=search(q);assert(h.includes(title),q);assert(h.includes('href="https:')||h.includes('data-open-app='),q);assert.equal(els.searchInput.value,q);}
+let natural=search('Máy giặt LG nhà tôi không vắt được, liên hệ ở đâu?');assert(natural.includes('LG'));assert(natural.includes('href="https:'));assert(!natural.includes('lifeProviderForm'));
+natural=search('Tôi muốn lấy số đăng ký trước tại bệnh viện Chợ Rẫy');assert(natural.includes('Chợ Rẫy'));assert(natural.includes('href="https:'));assert(!natural.includes('lifeProviderForm'));
+natural=search('App nào xem giờ học của con tôi?');assert(natural.includes('Thời khóa biểu'));assert(natural.includes('vnEdu'));
+natural=search('Gói hàng tôi chờ bao giờ tới?');assert(natural.includes('Theo dõi đơn mua hàng'));assert(natural.includes('lifeProviderForm'));
+natural=search('Bé mới chào đời cần giấy gì và máy giặt LG không vắt');assert(natural.includes('data-query-part="0"')&&natural.includes('data-query-part="1"'));
+handlers['document:click']({target:{closest(s){return s==='[data-query-part]'?{dataset:{queryPart:'1'}}:null;}}});assert(els.routeBody.innerHTML.includes('LG'));
+const QR=require('../core/question-router'),catalogs={public:require('../core/public-services').SERVICES,life:require('../core/life-services').SERVICES,citizen:require('../core/citizen-services').SERVICES};
+assert.equal(QR.ruleCount,40);assert.equal(QR.match('Tôi muốn đầu tư cổ phiếu',catalogs).status,'NONE');assert.equal(QR.match('Tôi đau ngực, cần thuốc nào?',catalogs).status,'NONE');assert.equal(QR.match('Máy giặt không vắt, số điện thoại 0901234567',catalogs).status,'PRIVATE_INPUT');assert.equal(QR.match('Bé mới chào đời làm giấy gì',{}).status,'NONE');assert.equal(QR.match('Đừng đăng ký khai sinh, tôi muốn đổi bằng lái',catalogs).status,'NONE');
+assert.equal(QR.match('Máy tính bảng không lên nguồn',catalogs).choices[0].id,'repair-phone');
+console.log('PASS 3.25 natural questions: reviewed handoffs, provider context, multiple needs, unchanged input, privacy and unknown-source refusal.');
