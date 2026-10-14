@@ -38,6 +38,7 @@ const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 const contains=(s,phrase)=>(' '+s+' ').includes(' '+normalize(phrase)+' ');
 // Với biển số, số định danh, email, điện thoại: xóa khỏi chuỗi xử lý và khỏi UI trả lời.
 const SENSITIVE_PATTERNS=[
+  /(?:mã|ma)\s*(?:khách\s*hàng|khach\s*hang|kh|học\s*sinh|hoc\s*sinh|thuê\s*bao|thue\s*bao)\s*[:#-]?\s*(?=[a-z0-9-]*\d)[a-z0-9-]{4,}/gi,
   /\b(?:số|so)\s*(?:thẻ|the)(?:\s*(?:đảng|dang)\s*(?:viên|vien))?\s*[:#-]?\s*\d(?:[ .-]?\d){5,11}\b/gi,
   /\b(?:mã|ma)\s*(?:số\s*|so\s*)?(?:đảng|dang)\s*(?:viên|vien)\s*[:#-]?\s*\d(?:[ .-]?\d){5,11}\b/gi,
   /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi,
@@ -109,7 +110,7 @@ function process(raw){
 }
 function selfCheck(){const bad=INTENTS.flatMap(t=>t.actions.filter(a=>!validUrl(a.url)).map(a=>t.id+': '+a.url));return {intents:INTENTS.length,invalidLinks:bad};}
 function focusQuery(raw){
- const q=normalize(raw);
+ const q=normalize(raw).replace(/\b(don hang|don mua|hang da dat)\s+khong mua nua\b/g,'$1 huy');
  // Keep semantic negations such as “không gắn chip”; remove only denied actions.
  return q.replace(/\b(?:khong|dung)\s+(?:(?:muon|can)\s+)?(?:doi|tra cuu|dang ky|nop|thanh toan|cap|lam|mo|tim|kiem tra|mua|sua|dat lich|huy don|dong|xin|chuyen|chung thuc)\b.*?(?=\b(?:toi muon|toi can|muon|can|thay vao do|ma la|chi muon)\b|$)/g,' ').replace(/\s+/g,' ').trim();
 }
