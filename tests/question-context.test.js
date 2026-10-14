@@ -9,6 +9,7 @@ for(const q of ['đóng tiền nước nông thôn','DONG TIEN NUOC NONG THON','
 for(const place of ['Đồng Nai','Nhà Bè','Đồng Tháp','Trà Vinh'])assert.equal(X.parse('đóng tiền nước '+place,'water').query,X.normalize(place));
 assert.equal(X.parse('tôi đã đóng tiền nước chưa','water').intent,'history');assert.equal(X.parse('báo sự cố mất nước','water').intent,'outage');
 let html=search('đóng tiền nước nông thôn Bình Chánh TPHCM');assert(html.includes('data-water-provider="nongthon"')||html.includes('Cấp nước Nông Thôn'));assert(!html.includes('data-water-provider="sawaco"'));assert(!html.includes('value="dong tien'));
+handlers['document:submit']({preventDefault(){},target:{id:'waterSearchForm',elements:{query:{value:'Bình Chánh'}}}});assert(els.routeBody.innerHTML.includes('id=\"waterRural\" type=\"checkbox\" checked'));assert(!els.routeBody.innerHTML.includes('data-water-provider=\"sawaco\"'));
 html=search('đóng tiền nước nông thôn Đồng Nai');assert(html.includes('0 đầu mối'));assert(!html.includes('data-open-water-app'));assert(!html.includes('data-water-provider="sawaco"'));
 html=search('tôi đã đóng tiền nước Long An chưa');assert(html.includes('khoản đã đóng'));assert(html.includes('LAWACO'));assert(!html.includes('value="chua'));
 html=search('đóng tiền điện Long An');assert(html.includes('ThanhToanTrucTuyen'));assert(html.includes('Thanh toán tiền điện'));html=search('lịch cúp điện Long An');assert(html.includes('LichNgungGiamCungCapDien'));
