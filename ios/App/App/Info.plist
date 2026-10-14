@@ -24,6 +24,10 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>VN App lấy vị trí khi bạn bấm nút GPS để xác định địa bàn tra cứu. Tên địa bàn được tra qua dịch vụ vị trí của thiết bị.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>VN App chỉ lấy vị trí theo yêu cầu khi đang dùng app, không theo dõi nền.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>VN App dùng camera để đọc mã QR và mã vạch theo yêu cầu của bạn.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

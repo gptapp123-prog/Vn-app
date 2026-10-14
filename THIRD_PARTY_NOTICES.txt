@@ -250,3 +250,5 @@ POSSIBILITY OF SUCH DAMAGES.
 You acknowledge that this software is not designed or intended for
 use in the design, construction, operation or maintenance of any
 nuclear facility.
+
+@capacitor/geolocation 8.2.3 — MIT; https://github.com/ionic-team/capacitor-geolocation . Uses operating-system position/geocoding services when requested. No third-party boundary dataset is bundled.
